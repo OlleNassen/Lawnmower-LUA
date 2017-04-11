@@ -1,0 +1,17 @@
+﻿  GameEngine.cpp
+c:\users\olle\documents\visual studio 2015\projects\lawnmower lua\lawnmower lua\button.h(53): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\olle\documents\visual studio 2015\projects\lawnmower lua\lawnmower lua\button.h(53): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+  MenuState.cpp
+c:\users\olle\documents\visual studio 2015\projects\lawnmower lua\lawnmower lua\button.h(53): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\olle\documents\visual studio 2015\projects\lawnmower lua\lawnmower lua\button.h(53): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+  main.cpp
+c:\users\olle\documents\visual studio 2015\projects\lawnmower lua\lawnmower lua\button.h(53): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\olle\documents\visual studio 2015\projects\lawnmower lua\lawnmower lua\button.h(53): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+c:\users\olle\documents\visual studio 2015\projects\lawnmower lua\lawnmower lua\main.cpp(9): warning C4551: function call missing argument list
+  GameState.cpp
+c:\users\olle\documents\visual studio 2015\projects\lawnmower lua\lawnmower lua\button.h(53): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\olle\documents\visual studio 2015\projects\lawnmower lua\lawnmower lua\button.h(53): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+  EditorState.cpp
+  Generating Code...
+  Lawnmower LUA.vcxproj -> C:\Users\Olle\Documents\Visual Studio 2015\Projects\Lawnmower LUA\Debug\Lawnmower LUA.exe
+  Lawnmower LUA.vcxproj -> C:\Users\Olle\Documents\Visual Studio 2015\Projects\Lawnmower LUA\Debug\Lawnmower LUA.pdb (Full PDB)
