@@ -8,6 +8,8 @@ int main()
 
     luaL_openlibs;
 
+    std::cout << "Github Test";
+
     GameEngine game;
 
     game.run();
