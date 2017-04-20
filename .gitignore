@@ -49,3 +49,4 @@ Temporary Items
 # Visual C++ cache files
 
 *.opendb
+.Lawnmower LUA.VC.db

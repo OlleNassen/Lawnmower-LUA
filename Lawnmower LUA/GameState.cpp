@@ -27,7 +27,7 @@ void GameState::handleEvents()
                 m_changeState = true;
                 m_nextState = States::EXIT;
             }
-
+		// hej
     }
 }
 
