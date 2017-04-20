@@ -359,8 +359,8 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-/American Nightmare/External
-/American Nightmare/Debug
+/Lawnmower-LUA/External
+/Lawnmower-LUA/Debug
 *.db
 *.opendb
 *.log
