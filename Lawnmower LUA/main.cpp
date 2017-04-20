@@ -4,6 +4,8 @@
 int main()
 {
 
+    std::cout << "Olle";
+
     lua_State* L = luaL_newstate();
 
     luaL_openlibs;
