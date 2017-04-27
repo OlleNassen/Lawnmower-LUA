@@ -14,5 +14,7 @@ int main()
 
     game.run();
 
+    lua_close(L);
+
     return 0;
 }
