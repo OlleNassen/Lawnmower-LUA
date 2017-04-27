@@ -11,7 +11,10 @@ function getPosition()
 	return position.x, position.y    
 end
 
-function changeType(inType)
+function setType(inType)
 	type = inType
-ChangeTexture(type)  
+end
+
+function getType()
+	return type
 end
