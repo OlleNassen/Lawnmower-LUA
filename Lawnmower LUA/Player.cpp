@@ -119,6 +119,23 @@ sf::Sprite * Player::getSprite()
 	return &m_sprite;
 }
 
+sf::Vector2f Player::getPosition() const
+{
+	sf::Vector2f position;
+	lua_getglobal(L, "getPosition");
+	if (lua_isfunction(L, -1))
+	{
+		lua_pcall(L, 0, 2, 0);
+		position.x = lua_tonumber(L, -2);
+		position.y = lua_tonumber(L, -1);
+		lua_pop(L, 2);
+	}
+	else std::cout << "getPosition is not a function" << std::endl;
+
+	return position;
+}
+
+
 void Player::loadLuaScript()
 {
 	int error = luaL_dofile(L, "Scripts/player.lua");
