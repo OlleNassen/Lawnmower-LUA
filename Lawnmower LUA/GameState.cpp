@@ -55,7 +55,10 @@ void GameState::handleInput()
 	float delta = 1.f;
 	int nrOfPlayers = 1;
 	for (int i = 0; i < nrOfPlayers; i++)
-		m_world.movePlayer(i, delta, verDir[i], horDir[i]);
+	{
+		if (!horDir[i].empty() || !verDir[i].empty())
+			m_world.movePlayer(i, delta, verDir[i], horDir[i]);
+	}
 }
 
 void GameState::update()
