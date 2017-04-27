@@ -34,7 +34,7 @@ void Player::update()
 
 void Player::loadLuaScript()
 {
-	int error = luaL_dofile(L, "player.lua");
+	int error = luaL_dofile(L, "Scripts/player.lua");
 	if (error == 1)
 	{
 		std::cout << "Failed to load with message: " << lua_tostring(L, -1) << std::endl;
