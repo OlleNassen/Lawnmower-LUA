@@ -1,14 +1,21 @@
 #include "World.h"
 
-
-
 World::World()
 {
+//	m_players.push_back(Player());
+//	m_players[0].loadTexture("")
 }
-
 
 World::~World()
 {
+}
+
+void World::update()
+{
+	for (const auto& players : m_players)
+	{
+		players.update();
+	}
 }
 
 void World::draw(sf::RenderTarget & target, sf::RenderStates states) const
