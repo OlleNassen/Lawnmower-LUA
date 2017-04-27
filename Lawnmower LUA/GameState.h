@@ -10,7 +10,7 @@ class GameState: public State
 {
 private:
     std::shared_ptr<ResourceManager> m_resources;
-	World world;
+	World m_world;
 
 public:
     GameState(sf::RenderWindow& window, std::shared_ptr<ResourceManager> resources);

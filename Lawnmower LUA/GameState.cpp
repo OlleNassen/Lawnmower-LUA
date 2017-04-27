@@ -41,6 +41,7 @@ void GameState::update()
 
 void GameState::draw() const
 {
+    m_window.draw(m_world);
 }
 
 void GameState::pause()
