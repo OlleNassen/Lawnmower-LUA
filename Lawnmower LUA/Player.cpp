@@ -119,11 +119,6 @@ sf::Sprite * Player::getSprite()
 	return &m_sprite;
 }
 
-sf::FloatRect Player::getHitbox() const
-{
-    return m_sprite.getGlobalBounds();
-}
-
 void Player::loadLuaScript()
 {
 	int error = luaL_dofile(L, "Scripts/player.lua");
