@@ -9,7 +9,7 @@ public:
 	Player();
 	Player(const Player& other);
 	~Player();
-
+	
 	bool loadTexture(std::string path);
 	void update();
 
