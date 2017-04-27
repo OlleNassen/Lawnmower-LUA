@@ -77,4 +77,9 @@
       <Filter>Resource Files</Filter>
     </Font>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\player.lua">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>
