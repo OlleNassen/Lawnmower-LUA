@@ -1,5 +1,6 @@
 ﻿position = {x = 200, y = 50}
 speed = 3
+score = 0
 
 function setPosition(x, y)
 	position.x = x
@@ -21,6 +22,10 @@ function collision(mx, my)
         position.y = 16
 	end
 
+end
+
+function addScore()
+	score = score + 1
 end
 
 function move(delta, verticalDir, horizontalDir)
