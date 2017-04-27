@@ -6,15 +6,28 @@
 class Tile : public sf::Drawable
 {
 public:
+	enum tileType 
+	{
+		Grass,
+		Ground,
+		Stone
+	};
+
 	Tile();
-	Tile(std::string texturePath);
+	Tile(std::string texturePath, tileType type = Grass);
 	Tile(const Tile& other);
 	~Tile();
 
 	bool loadTexture(std::string path);
 	void update();
+
+	tileType getTileType() const;
+	void setTileType(tileType type);
+
 private:
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
+	tileType m_type;
 
 	sf::Texture m_texture;
 	sf::Sprite m_sprite;
