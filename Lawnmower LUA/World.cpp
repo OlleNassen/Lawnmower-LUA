@@ -16,6 +16,14 @@ World::~World()
     {
         delete players;
     }
+
+    for (auto& tiles : m_tiles)
+    {
+        for (auto& tile : tiles)
+        {
+            delete tile;
+        }
+    }
 }
 
 void World::loadPlayers()
@@ -34,10 +42,10 @@ void World::loadTiles()
 {
     for (int x = 0; x < 25; x++)
     {
-        std::vector<Tile>tiles;
+        std::vector<Tile*>tiles;
         for (int y = 0; y < 20; y++)
         {
-            tiles.push_back(Tile());
+            tiles.push_back(new Tile);
         }
         m_tiles.push_back(tiles);
     }
@@ -58,7 +66,7 @@ void World::draw(sf::RenderTarget & target, sf::RenderStates states) const
     {
         for (const auto& tile : tiles)
         {
-            target.draw(tile, states);
+            target.draw(*tile, states);
         }
     }
 
