@@ -62,6 +62,7 @@ void World::collision()
                 if (tile->getHitbox().contains(player->getPosition()))
                 {
                     tile->setTileType(Tile::Stone);
+                    std::cout << "Yahoo";
                 }
             }
         }
@@ -70,6 +71,7 @@ void World::collision()
 
 void World::update()
 {
+    collision();
 	for (auto& players : m_players)
 	{
 		players->collision(m_mapSize);
