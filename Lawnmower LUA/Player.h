@@ -3,13 +3,13 @@
 
 #include <SFML\Graphics.hpp>
 
-class Player : sf::Drawable
+class Player : public sf::Drawable
 {
 public:
 	Player();
 	Player(const Player& other);
 	~Player();
-
+	
 	bool loadTexture(std::string path);
 	void update();
 
