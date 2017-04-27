@@ -1,4 +1,4 @@
-position = {x = 0, y = 0}
+﻿position = {x = 0, y = 0}
 speed = 3
 
 function setPosition(x, y)
@@ -25,15 +25,15 @@ end
 
 function move(delta, verticalDir, horizontalDir)
 
-    if horizontalDir == “left” then 
+    if horizontalDir == 'left' then 
         position.x =  position.x - (delta * speed)
-    elseif horizontalDir == “right” then
+    elseif horizontalDir == 'right' then
         position.x = position.x + (delta * speed)
     end
 
-    if verticalDir == “up” then
+    if verticalDir == 'up' then
         position.y = position.y - (delta * speed)
-    elseif verticalDir == “down” then
+    elseif verticalDir == 'down' then
         position.y = position.y + (delta * speed)
     end
 
