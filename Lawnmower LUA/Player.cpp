@@ -41,7 +41,6 @@ void Player::updatePosition()
 		m_sprite.setPosition(lua_tonumber(L, -1), lua_tonumber(L, -2));
 	}
 	else std::cout << "getPosition is not a function" << std::endl;
-	lua_pop(L, 1);
 }
 
 void Player::move(float delta, std::string horizontalDir, std::string verticalDir)
@@ -55,7 +54,6 @@ void Player::move(float delta, std::string horizontalDir, std::string verticalDi
 		lua_pcall(L, 3, 0, 0);
 	}
 	else std::cout << "move is not a function" << std::endl;
-	lua_pop(L, 1);
 }
 
 void Player::loadLuaScript()
