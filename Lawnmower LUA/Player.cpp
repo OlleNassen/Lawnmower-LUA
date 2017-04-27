@@ -64,69 +64,41 @@ void Player::move(float delta, std::string verticalDir, std::string horizontalDi
     {
         if (horizontalDir == "left")
         {
-            m_sprite.setRotation(45);
+            m_sprite.setRotation(225);
         }
 
         else if (horizontalDir == "right")
         {
-            m_sprite.setRotation(320);
+            m_sprite.setRotation(315);
         }
         else
         {
-            m_sprite.setRotation(360);
+            m_sprite.setRotation(270);
         }
     }
-
     else if (verticalDir == "down")
     {
         if (horizontalDir == "left")
         {
-
+			m_sprite.setRotation(135);
         }
-
         else if (horizontalDir == "right")
         {
-
+			m_sprite.setRotation(45);
         }
         else
         {
-            m_sprite.setRotation(360);
+			m_sprite.setRotation(90);
         }
     }
-
     else if (horizontalDir == "left")
     {
-        if (verticalDir == "up")
-        {
-
-        }
-
-        else if (verticalDir == "down")
-        {
-
-        }
-        else
-        {
-            m_sprite.setRotation(360);
-        }
+        m_sprite.setRotation(180);
     }
 
     else if (horizontalDir == "right")
     {
-        if (verticalDir == "up")
-        {
-
-        }
-
-        else if (verticalDir == "down")
-        {
-
-        }
-
-        else
-        {
-            m_sprite.setRotation(360);
-        }
+        m_sprite.setRotation(0);
     }
 
 
