@@ -51,3 +51,8 @@ void Tile::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 Tile::tileType Tile::getTileType() const { return m_type; }
 void Tile::setTileType(tileType type) { m_type = type; }
+
+sf::FloatRect Tile::getHitbox() const
+{
+    return m_sprite.getGlobalBounds();
+}

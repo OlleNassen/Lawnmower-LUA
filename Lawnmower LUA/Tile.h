@@ -25,6 +25,8 @@ public:
 	tileType getTileType() const;
 	void setTileType(tileType type);
 
+    sf::FloatRect getHitbox()const;
+
 private:
 	void loadLuaScript();
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;

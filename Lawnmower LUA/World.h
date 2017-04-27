@@ -21,6 +21,8 @@ public:
 	void loadPlayers();
     void loadTiles();
 
+    void collision();
+
 	void update();
     void draw(sf::RenderTarget& target, sf::RenderStates states)const override;
     void movePlayer(int player, float deltaTime, const std::string& verticalDir, const std::string& horizontalDir);

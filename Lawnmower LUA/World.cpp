@@ -51,6 +51,22 @@ void World::loadTiles()
     }
 }
 
+void World::collision()
+{
+    sf::Vector2f playerCordinates;
+
+    for (auto& player : m_players)
+    {
+        for (auto& tiles : m_tiles)
+        {
+            for (auto& tile : tiles)
+            {
+                if (tile->getHitbox().contains(playerCordinates));
+            }
+        }
+    }
+}
+
 void World::update()
 {
 	for (auto& players : m_players)
