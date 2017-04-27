@@ -19,8 +19,8 @@ void World::update()
 {
 	for (auto& players : m_players)
 	{
-		players->update();
 		players->collision(m_mapSize);
+		players->update();
 	}
 }
 
