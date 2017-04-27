@@ -1,5 +1,6 @@
 #pragma once
 #include "State.h"
+#include "Player.h"
 #include <vector>
 #include "Button.h"
 #include "ResourceManager.h"
@@ -9,6 +10,8 @@ class GameState: public State
 {
 private:
     std::shared_ptr<ResourceManager> m_resources;
+	std::vector<Player> players;
+
 public:
     GameState(sf::RenderWindow& window, std::shared_ptr<ResourceManager> resources);
     ~GameState();
