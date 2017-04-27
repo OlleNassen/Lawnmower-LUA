@@ -34,10 +34,7 @@ void World::draw(sf::RenderTarget & target, sf::RenderStates states) const
     }
 }
 
-void World::movePlayers(float deltaTime, const std::string& verticalDir, const std::string & horizontalDir)
+void World::movePlayer(int player, float deltaTime, const std::string& verticalDir, const std::string & horizontalDir)
 {
-    for (auto& players : m_players)
-    {
-        players->move(deltaTime, verticalDir, horizontalDir);
-    }
+    m_players[player]->move(deltaTime, verticalDir, horizontalDir);
 }
