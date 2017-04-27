@@ -2,6 +2,8 @@
 #define TILE_H
 #include <SFML\Graphics.hpp>
 #include <string>
+#include "lua.hpp"
+#include <iostream>
 
 class Tile : public sf::Drawable
 {
@@ -25,9 +27,11 @@ public:
 	void setTileType(tileType type);
 
 private:
+	void loadLuaScript();
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 	tileType m_type;
+	lua_State* L;
 
 	sf::Texture m_texture;
 	sf::Sprite m_sprite;
