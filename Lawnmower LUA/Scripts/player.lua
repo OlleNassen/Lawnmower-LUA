@@ -9,14 +9,14 @@ end
 --mx = map x max, my = map y max
 
 function collision(mx, my)
-	if position.x > mx then
-        position.x = mx
+	if position.x > mx -32 then
+        position.x = mx - 32
 	elseif position.x < 0 then
         position.x = 0
     end
 	
-    if position.y > my then
-        position.y = my
+    if position.y > my -32 then
+        position.y = my - 32
 	elseif position.y < 0 then
         position.y = 0
 	end

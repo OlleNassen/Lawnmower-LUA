@@ -12,6 +12,7 @@ private:
     std::vector<Tile> m_tiles;
     std::vector<Player*> m_players;
 	lua_State* m_worldScript;
+	sf::Vector2i mapSize;
 
 public:
     World();

@@ -2,6 +2,8 @@
 
 World::World()
 {
+	mapSize = sf::Vector2i(800, 600);
+
 	m_players.push_back(new Player());
 }
 
@@ -18,6 +20,7 @@ void World::update()
 	for (auto& players : m_players)
 	{
 		players->update();
+		players->collision(mapSize);
 	}
 }
 
