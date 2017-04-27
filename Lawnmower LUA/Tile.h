@@ -15,8 +15,7 @@ public:
 		Stone
 	};
 
-	Tile();
-	Tile(std::string texturePath, tileType type = Grass);
+	Tile(std::string texturePath, sf::Vector2i position, tileType type = Grass);
 	Tile(const Tile& other);
 	~Tile();
 

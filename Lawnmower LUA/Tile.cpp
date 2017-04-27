@@ -1,19 +1,17 @@
 #include "Tile.h"
 
-Tile::Tile() 
+Tile::Tile(std::string texturePath, sf::Vector2i index, tileType type)
 {
-	m_type = Grass;
+	m_type = type;
+	loadTexture(texturePath);
+
+	// temporary
+	m_sprite.setPosition(sf::Vector2f(32 * index.x, 32 * index.y));
 
 	// Initialize Lua
 	L = luaL_newstate();
 	luaL_openlibs(L);
 	loadLuaScript();
-}
-
-Tile::Tile(std::string texturePath, tileType type)
-{
-	m_type = type;
-	loadTexture(texturePath);
 }
 
 Tile::Tile(const Tile & other) { }
