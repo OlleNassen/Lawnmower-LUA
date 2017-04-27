@@ -37,10 +37,10 @@ void GameState::handleInput()
 	std::string verDir[4] = { "", "", "", "" };
 
 	// Player One
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) horDir[0] = "up";
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) horDir[0] = "down";
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) verDir[0] = "left";
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) verDir[0] = "right";
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) verDir[0] = "up";
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) verDir[0] = "down";
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) horDir[0] = "left";
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) horDir[0] = "right";
 
 	// Player Two
 

@@ -38,7 +38,8 @@ void Player::updatePosition()
 	if (lua_isfunction(L, -1))
 	{
 		lua_pcall(L, 0, 2, 0);
-		m_sprite.setPosition(lua_tonumber(L, -1), lua_tonumber(L, -2));
+		m_sprite.setPosition(lua_tonumber(L, -2), lua_tonumber(L, -1));
+		std::cout << lua_tostring(L, -2) << lua_tostring(L, -1) << std::endl;
 		lua_pop(L, 2);
 	}
 	else std::cout << "getPosition is not a function" << std::endl;
