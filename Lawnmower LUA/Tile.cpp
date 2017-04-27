@@ -7,6 +7,15 @@ Tile::Tile(std::string texturePath, sf::Vector2i index, tileType type)
 
 	// temporary
 	m_sprite.setPosition(sf::Vector2f(32 * index.x, 32 * index.y));
+	m_sprite.setOrigin(16, 16);
+	int random = rand() % 4 + 1;
+	switch (random)
+	{ 
+		case 1: m_sprite.setRotation(90); break;
+		case 2: m_sprite.setRotation(180); break;
+		case 3: m_sprite.setRotation(270); break;
+		case 4: m_sprite.setRotation(0); break;
+	}
 
 	// Initialize Lua
 	L = luaL_newstate();
