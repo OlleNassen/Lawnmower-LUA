@@ -6,6 +6,7 @@ class World: public sf::Drawable
 {
 private:
     std::vector<Tile> m_tiles;
+    std::vector<Player> m_players;
 public:
     World();
     virtual ~World();
