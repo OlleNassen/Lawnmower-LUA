@@ -1,4 +1,7 @@
 #pragma once
+
+#include "Tile.h"
+#include "Player.h"
 #include <SFML\Graphics.hpp>
 #include <vector>
 
