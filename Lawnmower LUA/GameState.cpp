@@ -33,7 +33,29 @@ void GameState::handleEvents()
 
 void GameState::handleInput()
 {
+	std::string horDir[4] = { "", "", "", "" };
+	std::string verDir[4] = { "", "", "", "" };
 
+	// Player One
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) horDir[0] = "up";
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) horDir[0] = "down";
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) verDir[0] = "left";
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) verDir[0] = "right";
+
+	// Player Two
+
+
+	// Player Three
+
+
+	// Player Four
+
+
+	// Moving players
+	float delta = 1.f;
+	int nrOfPlayers = 1;
+	for (int i = 0; i < nrOfPlayers; i++)
+		m_world.movePlayer(i, delta, verDir[i], horDir[i]);
 }
 
 void GameState::update()
