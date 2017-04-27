@@ -10,7 +10,7 @@ class World: public sf::Drawable
 {
 private:
     std::vector<Tile> m_tiles;
-    std::vector<Player> m_players;
+    std::vector<Player*> m_players;
 	lua_State* m_worldScript;
 
 public:

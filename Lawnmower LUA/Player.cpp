@@ -25,7 +25,6 @@ bool Player::loadTexture(std::string path)
 
 void Player::update()
 {
-	lua_getglobal(L, "getPosition");
 	if (lua_isfunction(L, -1))
 	{
 		lua_pcall(L, 2, 0, 0);
@@ -47,6 +46,8 @@ void Player::loadLuaScript()
 		std::cout << "Failed to load with message: " << lua_tostring(L, -1) << std::endl;
 		lua_pop(L, 1);
 	}
+
+	lua_getglobal(L, "getPosition");
 }
 
 void Player::draw(sf::RenderTarget & target, sf::RenderStates states) const

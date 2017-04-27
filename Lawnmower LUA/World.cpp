@@ -2,7 +2,7 @@
 
 World::World()
 {
-	m_players.push_back(Player());
+	m_players.push_back(new Player());
 }
 
 World::~World()
@@ -13,7 +13,7 @@ void World::update()
 {
 	for (auto& players : m_players)
 	{
-		players.update();
+		players->update();
 	}
 }
 
@@ -26,6 +26,6 @@ void World::draw(sf::RenderTarget & target, sf::RenderStates states) const
 
     for (const auto& players : m_players)
     {
-        target.draw(players, states);
+        target.draw(*players, states);
     }
 }
