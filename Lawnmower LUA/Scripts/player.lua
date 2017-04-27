@@ -26,15 +26,15 @@ end
 function move(delta, verticalDir, horizontalDir)
 
     if verticalDir == 'left' then 
-        position.x =  position.x - (delta * speed)
+        position.x =  position.x + (delta * speed)
     elseif verticalDir == 'right' then
-        position.x = position.x + (delta * speed)
+        position.x = position.x - (delta * speed)
     end
 
     if horizontalDir == 'up' then
-        position.y = position.y - (delta * speed)
-    elseif horizontalDir == 'down' then
         position.y = position.y + (delta * speed)
+    elseif horizontalDir == 'down' then
+        position.y = position.y - (delta * speed)
     end
 
 end
