@@ -20,6 +20,10 @@ public:
 
 	bool loadTexture(std::string path);
 	void update();
+
+	tileType getTileType() const;
+	void setTileType(tileType type);
+
 private:
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 

@@ -33,3 +33,6 @@ void Tile::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(m_sprite, states);
 }
+
+Tile::tileType Tile::getTileType() const { return m_type; }
+void Tile::setTileType(tileType type) { m_type = type; }
