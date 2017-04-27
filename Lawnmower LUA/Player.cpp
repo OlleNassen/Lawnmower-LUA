@@ -44,7 +44,7 @@ void Player::updatePosition()
 	else std::cout << "getPosition is not a function" << std::endl;
 }
 
-void Player::move(float delta, std::string horizontalDir, std::string verticalDir)
+void Player::move(float delta, std::string verticalDir, std::string horizontalDir)
 {
 	lua_getglobal(L, "move");
 	if (lua_isfunction(L, -1))
