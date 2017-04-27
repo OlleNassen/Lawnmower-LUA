@@ -7,6 +7,10 @@ World::World()
 
 World::~World()
 {
+    for (auto& players : m_players)
+    {
+        delete players;
+    }
 }
 
 void World::update()

@@ -4,17 +4,17 @@
 int main()
 {
 
-    lua_State* L = luaL_newstate();
+    //lua_State* L = luaL_newstate();
 
-    luaL_openlibs(L);
+    //luaL_openlibs(L);
 
-    luaL_dofile(L, ".\\Scripts\\printHelloWorld.lua");
+    //luaL_dofile(L, ".\\Scripts\\printHelloWorld.lua");
 
     GameEngine game;
 
     game.run();
 
-    lua_close(L);
+    //lua_close(L);
 
     return 0;
 }
