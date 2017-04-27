@@ -44,6 +44,20 @@ void Player::updatePosition()
 	lua_pop(L, 1);
 }
 
+void Player::move(float delta, std::string horizontalDir, std::string verticalDir)
+{
+	lua_getglobal(L, "move");
+	if (lua_isfunction(L, -1))
+	{
+		lua_pushnumber(L, delta);
+		lua_pushstring(L, verticalDir.c_str());
+		lua_pushstring(L, horizontalDir.c_str());
+		lua_pcall(L, 3, 0, 0);
+	}
+	else std::cout << "move is not a function" << std::endl;
+	lua_pop(L, 1);
+}
+
 void Player::loadLuaScript()
 {
 	int error = luaL_dofile(L, "Scripts/player.lua");
