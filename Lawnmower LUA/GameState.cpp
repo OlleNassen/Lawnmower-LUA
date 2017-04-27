@@ -33,6 +33,7 @@ void GameState::handleEvents()
 
 void GameState::handleInput()
 {
+
 }
 
 void GameState::update()

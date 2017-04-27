@@ -19,5 +19,6 @@ public:
 
 	void update();
     void draw(sf::RenderTarget& target, sf::RenderStates states)const override;
+    void movePlayers(float deltaTime, const std::string& verticalDir, const std::string& horizontalDir);
 };
 
