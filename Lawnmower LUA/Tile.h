@@ -27,7 +27,6 @@ public:
 	void setTileType(tileType type);
 
 private:
-	int ChangeTexture(lua_State* L);
 	void loadLuaScript();
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
