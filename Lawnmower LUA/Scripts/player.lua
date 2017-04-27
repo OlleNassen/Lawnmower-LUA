@@ -13,7 +13,7 @@ function collision(mx, my)
 position.x = mx
 	end
 
-	else if (position.x < 0) then
+	elseif (position.x < 0) then
  position.x = 0
 	end
 
@@ -21,7 +21,7 @@ position.x = mx
 position.y = my
 	end
 
-	else if (position.y < 0) then
+	elseif (position.y < 0) then
  position.y = 0
 	end
 
@@ -33,7 +33,7 @@ if (horizontalDir == “left”) then
 	position.x -= delta * speed
 end
 
-else if (horizontalDir == “right”) then
+elseif (horizontalDir == “right”) then
 	position.x += delta * speed
 end
 
@@ -41,7 +41,7 @@ if (verticalDir == “up”) then
 	position.y -= delta * speed
 end
 
-else if (verticalDir == “down”)
+elseif (verticalDir == “down”) then
 	position.y += delta * speed
 end
 
