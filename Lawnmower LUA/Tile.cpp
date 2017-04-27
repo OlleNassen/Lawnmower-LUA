@@ -3,6 +3,11 @@
 Tile::Tile() 
 {
 	m_type = Grass;
+
+	// Initialize Lua
+	L = luaL_newstate();
+	luaL_openlibs(L);
+	loadLuaScript();
 }
 
 Tile::Tile(std::string texturePath, tileType type)
@@ -27,6 +32,16 @@ bool Tile::loadTexture(std::string path)
 void Tile::update()
 {
 
+}
+
+void Tile::loadLuaScript()
+{
+	int error = luaL_dofile(L, "Scripts/tile.lua");
+	if (error == 1)
+	{
+		std::cout << "Failed to load with message: " << lua_tostring(L, -1) << std::endl;
+		lua_pop(L, 1);
+	}
 }
 
 void Tile::draw(sf::RenderTarget& target, sf::RenderStates states) const
