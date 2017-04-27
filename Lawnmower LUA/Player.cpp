@@ -60,6 +60,76 @@ void Player::collision(sf::Vector2i mapSize)
 
 void Player::move(float delta, std::string verticalDir, std::string horizontalDir)
 {
+    if (verticalDir == "up")
+    {
+        if (horizontalDir == "left")
+        {
+            m_sprite.setRotation(45);
+        }
+
+        else if (horizontalDir == "right")
+        {
+            m_sprite.setRotation(320);
+        }
+        else
+        {
+            m_sprite.setRotation(360);
+        }
+    }
+
+    else if (verticalDir == "down")
+    {
+        if (horizontalDir == "left")
+        {
+
+        }
+
+        else if (horizontalDir == "right")
+        {
+
+        }
+        else
+        {
+            m_sprite.setRotation(360);
+        }
+    }
+
+    else if (horizontalDir == "left")
+    {
+        if (verticalDir == "up")
+        {
+
+        }
+
+        else if (verticalDir == "down")
+        {
+
+        }
+        else
+        {
+            m_sprite.setRotation(360);
+        }
+    }
+
+    else if (horizontalDir == "right")
+    {
+        if (verticalDir == "up")
+        {
+
+        }
+
+        else if (verticalDir == "down")
+        {
+
+        }
+
+        else
+        {
+            m_sprite.setRotation(360);
+        }
+    }
+
+
 	lua_getglobal(L, "move");
 	if (lua_isfunction(L, -1))
 	{
