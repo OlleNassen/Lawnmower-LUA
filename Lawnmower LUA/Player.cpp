@@ -25,6 +25,13 @@ bool Player::loadTexture(std::string path)
 
 void Player::update()
 {
+	lua_getglobal(L, "getPosition");
+	if (lua_isfunction(L, -1))
+	{
+		lua_pcall(L, 2, 0, 0);
+		std::cout << lua_tostring(L, -1) << lua_tostring(L, -2) << std::endl;;
+	}
+	else std::cout << "getPosition is not a function" << std::endl;
 
 
 	// Reload file
