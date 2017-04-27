@@ -77,6 +77,14 @@ void World::update()
 		players->collision(m_mapSize);
 		players->update();
 	}
+
+	for (const auto& tiles : m_tiles)
+	{
+		for (const auto& tile : tiles)
+		{
+			tile->update();
+		}
+	}
 }
 
 void World::draw(sf::RenderTarget & target, sf::RenderStates states) const

@@ -28,6 +28,7 @@ public:
     sf::FloatRect getHitbox()const;
 
 private:
+	void checkIfCut();
 	void loadLuaScript();
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 

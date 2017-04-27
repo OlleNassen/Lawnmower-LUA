@@ -127,7 +127,6 @@ sf::Vector2f Player::getPosition() const
 	return position;
 }
 
-
 void Player::loadLuaScript()
 {
 	int error = luaL_dofile(L, "Scripts/player.lua");

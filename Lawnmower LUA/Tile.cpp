@@ -31,7 +31,7 @@ bool Tile::loadTexture(std::string path)
 
 void Tile::update()
 {
-
+	checkIfCut();
 }
 
 void Tile::loadLuaScript()
@@ -47,6 +47,23 @@ void Tile::loadLuaScript()
 void Tile::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(m_sprite, states);
+}
+
+void Tile::checkIfCut()
+{
+	tileType type;
+	lua_getglobal(L, "getType");
+	if (lua_isfunction(L, -1))
+	{
+		lua_pcall(L, 0, 1, 0);
+		type = tileType(int(lua_tonumber(L, -1)));
+		lua_pop(L, 1);
+	}
+	else std::cout << "getType is not a function" << std::endl;
+	if (m_type != type)
+	{
+		m_sprite.setColor(sf::Color::Black);
+	}
 }
 
 Tile::tileType Tile::getTileType() const { return m_type; }
