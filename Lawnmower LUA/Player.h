@@ -5,7 +5,7 @@
 #include <iostream>
 #include "lua.hpp"
 
-class Player : public sf::Drawable
+class Player : public sf::Drawable, sf::Transformable
 {
 public:
 	Player();
