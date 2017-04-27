@@ -63,6 +63,7 @@ void Tile::checkIfCut()
 	if (m_type != type)
 	{
 		m_sprite.setColor(sf::Color::Black);
+		m_type = type;
 	}
 }
 
