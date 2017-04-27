@@ -45,7 +45,7 @@ void World::loadTiles()
         std::vector<Tile*>tiles;
         for (int y = 0; y < 20; y++)
         {
-            tiles.push_back(new Tile((y > 5) ? ".\\Resources\\grass32x32.jpg" : ".\\Resources\\cut_grass32x32.png", sf::Vector2i(x, y), Tile::Grass));
+            tiles.push_back(new Tile((y > 5) ? ".\\Resources\\grass32x32.png" : ".\\Resources\\cut_grass32x32.png", sf::Vector2i(x, y), Tile::Grass));
         }
         m_tiles.push_back(tiles);
     }
