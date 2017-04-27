@@ -12,7 +12,7 @@ World::~World()
 
 void World::update()
 {
-	for (const auto& players : m_players)
+	for (auto& players : m_players)
 	{
 		players.update();
 	}

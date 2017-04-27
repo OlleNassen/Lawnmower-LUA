@@ -3,7 +3,7 @@
 
 #include <SFML\Graphics.hpp>
 
-class Player : sf::Drawable
+class Player : public sf::Drawable
 {
 public:
 	Player();
