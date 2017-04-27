@@ -141,6 +141,11 @@ void Player::move(float delta, std::string verticalDir, std::string horizontalDi
 	else std::cout << "move is not a function" << std::endl;
 }
 
+sf::Sprite * Player::getSprite()
+{
+	return &m_sprite;
+}
+
 void Player::loadLuaScript()
 {
 	int error = luaL_dofile(L, "Scripts/player.lua");

@@ -19,6 +19,8 @@ public:
 	void collision(sf::Vector2i mapSize);
 	void move(float delta, std::string horizontalDir, std::string verticalDir);
 
+	sf::Sprite* getSprite();
+
 private:
 	void loadLuaScript();
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
