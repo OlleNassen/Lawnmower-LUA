@@ -3,7 +3,7 @@
 
 
 GameEngine::GameEngine()
-    :m_window({ 800,600 }, "SFML with LUA")
+    :m_window({ 800,640 }, "SFML with LUA")
 {
     m_resources = std::make_shared<ResourceManager>();
     m_gameStates.push(std::make_unique<MenuState>(m_window, m_resources));
