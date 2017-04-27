@@ -43,7 +43,10 @@ void GameState::handleInput()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) horDir[0] = "right";
 
 	// Player Two
-
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) verDir[1] = "up";
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) verDir[1] = "down";
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) horDir[1] = "left";
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) horDir[1] = "right";
 
 	// Player Three
 
@@ -53,7 +56,7 @@ void GameState::handleInput()
 
 	// Moving players
 	float delta = 1.f;
-	int nrOfPlayers = 1;
+	int nrOfPlayers = 2;
 	for (int i = 0; i < nrOfPlayers; i++)
 	{
 		if (!horDir[i].empty() || !verDir[i].empty())

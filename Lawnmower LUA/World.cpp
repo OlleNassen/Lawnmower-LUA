@@ -4,7 +4,7 @@ World::World(sf::Vector2i mapSize)
 {
 	m_mapSize = mapSize;
 
-	m_players.push_back(new Player());
+	loadPlayers();
 }
 
 World::~World()
@@ -13,6 +13,18 @@ World::~World()
     {
         delete players;
     }
+}
+
+void World::loadPlayers()
+{
+	Player* one = new Player();
+	one->getSprite()->setColor(sf::Color::Cyan);
+
+	Player* two = new Player();
+	two->getSprite()->setColor(sf::Color::Red);
+
+	m_players.push_back(one);
+	m_players.push_back(two);
 }
 
 void World::update()

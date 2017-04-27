@@ -18,6 +18,8 @@ public:
     World(sf::Vector2i mapSize);
     virtual ~World();
 
+	void loadPlayers();
+
 	void update();
     void draw(sf::RenderTarget& target, sf::RenderStates states)const override;
     void movePlayer(int player, float deltaTime, const std::string& verticalDir, const std::string& horizontalDir);
