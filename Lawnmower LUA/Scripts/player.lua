@@ -41,7 +41,7 @@ if (verticalDir == “up”) then
 	position.y -= delta * speed
 end
 
-else if (verticalDir == “down”)
+else if (verticalDir == “down”) then
 	position.y += delta * speed
 end
 
