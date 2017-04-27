@@ -5,6 +5,9 @@ World::World(sf::Vector2i mapSize)
 	m_mapSize = mapSize;
 
 	loadPlayers();
+
+    loadTiles();
+    
 }
 
 World::~World()
@@ -25,6 +28,19 @@ void World::loadPlayers()
 
 	m_players.push_back(one);
 	m_players.push_back(two);
+}
+
+void World::loadTiles()
+{
+    for (int x = 0; x < 25; x++)
+    {
+        std::vector<Tile>tiles;
+        for (int y = 0; y < 20; y++)
+        {
+            tiles.push_back(Tile());
+        }
+        m_tiles.push_back(tiles);
+    }
 }
 
 void World::update()
