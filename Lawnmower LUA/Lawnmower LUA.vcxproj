@@ -161,6 +161,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="GameEngine.cpp" />
+    <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
@@ -170,6 +171,7 @@
     <ClInclude Include="MenuState.h" />
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\font.ttf" />
