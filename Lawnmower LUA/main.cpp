@@ -4,13 +4,11 @@
 int main()
 {
 
-    std::cout << "Olle";
-
     lua_State* L = luaL_newstate();
 
-    luaL_openlibs;
+    luaL_openlibs(L);
 
-    std::cout << "Github Test";
+    luaL_dofile(L, ".\\Scripts\\printHelloWorld.lua");
 
     GameEngine game;
 
