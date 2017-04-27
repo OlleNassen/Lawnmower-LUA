@@ -17,4 +17,9 @@ void World::draw(sf::RenderTarget & target, sf::RenderStates states) const
     {
         target.draw(tiles, states);
     }
+
+    for (const auto& players : m_players)
+    {
+        target.draw(players, states);
+    }
 }
