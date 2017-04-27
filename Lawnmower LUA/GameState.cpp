@@ -37,6 +37,7 @@ void GameState::handleInput()
 
 void GameState::update()
 {
+    m_world.update();
 }
 
 void GameState::draw() const

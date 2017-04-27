@@ -12,6 +12,9 @@ private:
     std::shared_ptr<ResourceManager> m_resources;
 	World m_world;
 
+    sf::Time m_time;
+    sf::Clock m_clock;
+
 public:
     GameState(sf::RenderWindow& window, std::shared_ptr<ResourceManager> resources);
     ~GameState();
