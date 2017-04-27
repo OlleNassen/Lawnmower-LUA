@@ -21,6 +21,7 @@ bool Player::loadTexture(std::string path)
 		return false;
 
 	m_sprite.setTexture(m_texture);
+    m_sprite.setOrigin({ 32 / 2, 32 / 2 });
 	return true;
 }
 
