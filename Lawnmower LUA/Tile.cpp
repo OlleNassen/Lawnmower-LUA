@@ -1,9 +1,13 @@
 #include "Tile.h"
 
-Tile::Tile() { }
-
-Tile::Tile(std::string texturePath)
+Tile::Tile() 
 {
+	m_type = Grass;
+}
+
+Tile::Tile(std::string texturePath, tileType type)
+{
+	m_type = type;
 	loadTexture(texturePath);
 }
 
