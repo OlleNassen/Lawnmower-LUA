@@ -34,21 +34,6 @@ void Tile::update()
 
 }
 
-
-int Tile::ChangeTexture(lua_State* L)
-{
-	enum tiletype type = tiletype(lua_tonumber(L, 1));
-
-	switch (type)
-	{
-		case Grass: m_sprite.setTexture(m_texture); break;
-		case Ground: m_sprite.setTexture(m_texture); break;
-		case Stone: m_sprite.setTexture(m_texture); break;
-	}
-
-	return 0;
-}
-
 void Tile::loadLuaScript()
 {
 	int error = luaL_dofile(L, "Scripts/tile.lua");
