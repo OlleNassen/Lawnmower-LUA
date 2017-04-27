@@ -25,18 +25,23 @@ bool Player::loadTexture(std::string path)
 
 void Player::update()
 {
-	lua_getglobal(L, "getPosition");
-	if (lua_isfunction(L, -1))
-	{
-		lua_pcall(L, 0, 2, 0);
-		std::cout << lua_tostring(L, -1) << lua_tostring(L, -2) << std::endl;;
-	}
-	else std::cout << "getPosition is not a function" << std::endl;
-	lua_pop(L, 1);
+	updatePosition();
 
 	// Reload file
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
 		loadLuaScript();
+}
+
+void Player::updatePosition()
+{
+	lua_getglobal(L, "getPosition");
+	if (lua_isfunction(L, -1))
+	{
+		lua_pcall(L, 0, 2, 0);
+		m_sprite.setPosition(lua_tonumber(L, -1), lua_tonumber(L, -2));
+	}
+	else std::cout << "getPosition is not a function" << std::endl;
+	lua_pop(L, 1);
 }
 
 void Player::loadLuaScript()

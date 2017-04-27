@@ -14,6 +14,7 @@ public:
 	
 	bool loadTexture(std::string path);
 	void update();
+	void updatePosition();
 
 private:
 	void loadLuaScript();

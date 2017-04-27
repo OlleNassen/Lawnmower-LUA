@@ -1,4 +1,4 @@
-﻿position = {x = 0, y = 0}
+﻿position = {x = 200, y = 50}
 speed = 3
 
 function setPosition(x, y)
