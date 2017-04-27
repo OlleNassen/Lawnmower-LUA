@@ -59,10 +59,9 @@ void World::collision()
         {
             for (auto& tile : tiles)
             {
-                if (tile->getHitbox().contains(player->getPosition()))
+                if (tile->getHitbox().contains(player->getPosition()) && tile->getTileType() == Tile::Grass)
                 {
                     tile->setTileType(Tile::Stone);
-                    std::cout << "Yahoo";
                 }
             }
         }
