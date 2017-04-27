@@ -2,6 +2,8 @@
 #define PLAYER_H
 
 #include <SFML\Graphics.hpp>
+#include <iostream>
+#include "lua.hpp"
 
 class Player : public sf::Drawable
 {
@@ -14,8 +16,10 @@ public:
 	void update();
 
 private:
+	void loadLuaScript();
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
+	lua_State* L;
 	sf::Texture m_texture;
 	sf::Sprite m_sprite;
 };

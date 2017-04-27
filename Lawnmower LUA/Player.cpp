@@ -3,6 +3,11 @@
 Player::Player()
 {
 	loadTexture("texture.png");
+
+	// Initialize Lua
+	L = luaL_newstate();
+	luaL_openlibs(L);
+	loadLuaScript();
 }
 
 Player::Player(const Player & other) { }
@@ -21,6 +26,20 @@ bool Player::loadTexture(std::string path)
 void Player::update()
 {
 
+
+	// Reload file
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+		loadLuaScript();
+}
+
+void Player::loadLuaScript()
+{
+	int error = luaL_dofile(L, "player.lua");
+	if (error == 1)
+	{
+		std::cout << "Failed to load with message: " << lua_tostring(L, -1) << std::endl;
+		lua_pop(L, 1);
+	}
 }
 
 void Player::draw(sf::RenderTarget & target, sf::RenderStates states) const

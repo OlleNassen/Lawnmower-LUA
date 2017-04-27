@@ -2,8 +2,8 @@
 
 World::World()
 {
-//	m_players.push_back(Player());
-//	m_players[0].loadTexture("")
+	m_players.push_back(Player());
+	m_players[0].loadTexture("");
 }
 
 World::~World()
