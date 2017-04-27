@@ -15,6 +15,8 @@ public:
 	bool loadTexture(std::string path);
 	void update();
 	void updatePosition();
+
+	void collision(sf::Vector2i mapSize);
 	void move(float delta, std::string horizontalDir, std::string verticalDir);
 
 private:

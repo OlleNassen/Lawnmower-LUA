@@ -1,7 +1,9 @@
 #include "World.h"
 
-World::World()
+World::World(sf::Vector2i mapSize)
 {
+	m_mapSize = mapSize;
+
 	m_players.push_back(new Player());
 }
 
@@ -17,6 +19,7 @@ void World::update()
 {
 	for (auto& players : m_players)
 	{
+		players->collision(m_mapSize);
 		players->update();
 	}
 }

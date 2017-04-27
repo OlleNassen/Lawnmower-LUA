@@ -12,9 +12,10 @@ private:
     std::vector<Tile> m_tiles;
     std::vector<Player*> m_players;
 	lua_State* m_worldScript;
+	sf::Vector2i m_mapSize;
 
 public:
-    World();
+    World(sf::Vector2i mapSize);
     virtual ~World();
 
 	void update();

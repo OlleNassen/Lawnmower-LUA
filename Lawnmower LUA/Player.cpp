@@ -46,6 +46,18 @@ void Player::updatePosition()
 	else std::cout << "getPosition is not a function" << std::endl;
 }
 
+void Player::collision(sf::Vector2i mapSize)
+{
+	lua_getglobal(L, "collision");
+	if (lua_isfunction(L, -1))
+	{
+		lua_pushnumber(L, mapSize.x);
+		lua_pushnumber(L, mapSize.y);
+		lua_pcall(L, 2, 0, 0);
+	}
+	else std::cout << "collision is not a function" << std::endl;
+}
+
 void Player::move(float delta, std::string verticalDir, std::string horizontalDir)
 {
     if (verticalDir == "up")
