@@ -67,7 +67,16 @@ void Tile::checkIfCut()
 }
 
 Tile::tileType Tile::getTileType() const { return m_type; }
-void Tile::setTileType(tileType type) { m_type = type; }
+void Tile::setTileType(tileType type) 
+{
+	lua_getglobal(L, "setType");
+	if (lua_isfunction(L, -1))
+	{
+		lua_pushnumber(L, type);
+		lua_pcall(L, 1, 0, 0);
+	}
+	else std::cout << "setType is not a function" << std::endl;
+}
 
 sf::FloatRect Tile::getHitbox() const
 {
