@@ -62,8 +62,23 @@ void Tile::checkIfCut()
 	else std::cout << "getType is not a function" << std::endl;
 	if (m_type != type)
 	{
-		m_sprite.setColor(sf::Color::Black);
 		m_type = type;
+		switch (type)
+		{
+		case Grass: 
+			m_sprite.setColor(sf::Color::Black); 
+			m_sprite.setTexture(*m_textureGrass); 
+			break;
+		case Ground: 
+			m_sprite.setColor(sf::Color::Red);
+			m_sprite.setTexture(*m_textureGround); 
+			break;
+		case Stone:
+			m_sprite.setColor(sf::Color::Cyan);
+			m_sprite.setTexture(*m_textureStone);
+			break;
+		}
+
 	}
 }
 

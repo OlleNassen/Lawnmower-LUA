@@ -35,7 +35,9 @@ private:
 	tileType m_type;
 	lua_State* L;
 
-	sf::Texture m_texture;
+	sf::Texture* m_textureGrass;
+	sf::Texture* m_textureGround;
+	sf::Texture* m_textureStone;
 	sf::Sprite m_sprite;
 };
 
