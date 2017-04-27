@@ -20,6 +20,8 @@ public:
 	void move(float delta, std::string horizontalDir, std::string verticalDir);
 
 	sf::Sprite* getSprite();
+    sf::FloatRect getHitbox()const;
+
 private:
 	void loadLuaScript();
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
