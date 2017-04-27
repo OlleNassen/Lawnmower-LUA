@@ -2,7 +2,7 @@
 
 Player::Player()
 {
-	loadTexture("texture.png");
+	loadTexture(".\\Resources\\lawnmower.png");
 
 	// Initialize Lua
 	L = luaL_newstate();
