@@ -1,8 +1,14 @@
 #include "Player.h"
 
-Player::Player()
+Player::Player(sf::Font& font, sf::Texture& texture)
 {
-	loadTexture(".\\Resources\\lawnmower32x32.png");
+	m_sprite.setTexture(texture);
+	m_sprite.setOrigin({ 32 / 2, 32 / 2 });
+
+	// Setting text
+	m_text.setFont(font);
+	m_text.setOrigin({ 32 / 2, 32 / 2 });
+	m_text.setCharacterSize(15.f);
 
 	// Initialize Lua
 	L = luaL_newstate();
@@ -15,16 +21,6 @@ Player::Player(const Player & other) { }
 
 Player::~Player() { }
 
-bool Player::loadTexture(std::string path)
-{
-	if (!m_texture.loadFromFile(path))
-		return false;
-
-	m_sprite.setTexture(m_texture);
-    m_sprite.setOrigin({ 32 / 2, 32 / 2 });
-	return true;
-}
-
 void Player::update()
 {
 	updatePosition();
@@ -36,7 +32,29 @@ void Player::update()
 
 void Player::updatePosition()
 {
-	m_sprite.setPosition(getPosition());
+	sf::Vector2f pos = getPosition();
+
+	m_sprite.setPosition(pos);
+	m_text.setPosition(pos);
+}
+
+void Player::addPoint()
+{
+	lua_getglobal(L, "score");
+	if (lua_isinteger(L, -1))
+	{
+		// Adding one score
+		int score = lua_tointeger(L, -1) + 1;
+
+		// Pushing to lua
+		lua_pushinteger(L, score);
+		lua_setglobal(L, "score");
+		lua_pcall(L, 1, 0, 0);
+
+		// Chaning text string
+		m_text.setString(std::to_string(score));
+	}
+	else std::cout << "Score is not an integer in lua." << std::endl;
 }
 
 void Player::collision(sf::Vector2i mapSize)
@@ -140,4 +158,5 @@ void Player::loadLuaScript()
 void Player::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
 	target.draw(m_sprite, states);
+	target.draw(m_text, states);
 }
