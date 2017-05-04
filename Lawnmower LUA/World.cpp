@@ -150,6 +150,38 @@ void World::collision()
         {
             for (auto& tile : tiles)
             {
+				sf::FloatRect intersection;
+
+				// Player - Stone Tile collision
+				if (tile->getTileType() == Tile::Stone && tile->getHitbox().intersects(player->getHitbox(), intersection))
+				{
+					// Fix position in x
+					if (intersection.width < intersection.height)
+					{
+						if (player->getPosition().x < intersection.left)
+						{
+							player->setPosition(sf::Vector2f(player->getPosition().x - intersection.width, player->getPosition().y));
+						}
+						else
+						{
+							player->setPosition(sf::Vector2f(player->getPosition().x + intersection.width, player->getPosition().y));
+						}
+					}
+					// Fix position in y
+					else
+					{
+						if (player->getPosition().y < intersection.top)
+						{
+							player->setPosition(sf::Vector2f(player->getPosition().x, player->getPosition().y - intersection.height));
+						}
+						else
+						{
+							player->setPosition(sf::Vector2f(player->getPosition().x, player->getPosition().y + intersection.height));
+						}
+					}
+				}
+
+				// Player - Grass Tile collision
                 if (tile->getHitbox().contains(player->getPosition()) && tile->getTileType() == Tile::Grass)
                 {
                     tile->setTileType(Tile::Ground);
