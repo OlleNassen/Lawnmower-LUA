@@ -42,6 +42,7 @@ void World::loadPlayers(std::shared_ptr<ResourceManager> resources)
 
 void World::loadTiles(std::shared_ptr<ResourceManager> resources)
 {
+	/*
     std::ifstream map(".\\map.txt");
 
     unsigned int x = 0;
@@ -85,6 +86,7 @@ void World::loadTiles(std::shared_ptr<ResourceManager> resources)
         }
 
     }
+	*/
 
     for (int x = 0; x < 25; x++)
     {
@@ -128,7 +130,7 @@ void World::collision()
 					// Fix position in y
 					else
 					{
-						if (player->getPosition().y < intersection.left)
+						if (player->getPosition().y < intersection.top)
 						{
 							player->setPosition(sf::Vector2f(player->getPosition().x, player->getPosition().y - intersection.width * 0.5f));
 							otherPlayer->setPosition(sf::Vector2f(otherPlayer->getPosition().x, otherPlayer->getPosition().y + intersection.width * 0.5f));
