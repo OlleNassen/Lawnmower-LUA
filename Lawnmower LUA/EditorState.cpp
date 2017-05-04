@@ -88,10 +88,10 @@ void EditorState::saveToFile() const
 
 void EditorState::changeSprite(int type, sf::Vector2i index)
 {
-	m_tiles[index.y][index.x].setTexture(m_resources->tiles[type]);
-	m_tiles[index.y][index.x].setPosition(sf::Vector2f(32 * index.x + 16, 32 * index.y + 16));
-	m_tiles[index.y][index.x].setOrigin(16, 16);
-	m_tiles[index.y][index.x].setRotation((rand() % 3 > 2) ? 270 : ((rand() % 3 > 1) ? 180 : ((rand() % 3 > 0) ? 90 : 0)));
+	m_tiles[index.x][index.y].setTexture(m_resources->tiles[type]);
+	m_tiles[index.x][index.y].setPosition(sf::Vector2f(32 * index.x + 16, 32 * index.y + 16));
+	m_tiles[index.x][index.y].setOrigin(16, 16);
+	m_tiles[index.x][index.y].setRotation((rand() % 3 > 2) ? 270 : ((rand() % 3 > 1) ? 180 : ((rand() % 3 > 0) ? 90 : 0)));
 }
 
 void EditorState::loadLuaScript()
