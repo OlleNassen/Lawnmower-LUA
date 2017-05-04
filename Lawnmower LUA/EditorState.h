@@ -1,6 +1,7 @@
 #pragma once
 #include "State.h"
 #include "lua.hpp"
+#include "Tile.h"
 #include <fstream>
 
 class EditorState :public State
@@ -9,7 +10,10 @@ private:
     std::shared_ptr<ResourceManager> m_resources;
 	std::vector<std::vector<sf::Sprite>> m_tiles;
 	lua_State* L;
+	bool m_pressed;
+	Tile::tileType type;
 
+	void edit(sf::Vector2i position);
 	void changeSprite(int type, sf::Vector2i index);
 	void loadLuaScript();
 	void loadGrid();

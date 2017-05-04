@@ -6,6 +6,8 @@ EditorState::EditorState(sf::RenderWindow& window, std::shared_ptr<ResourceManag
     :State(window)
 {
     m_resources = resources;
+	m_pressed = false;
+	type = Tile::Stone;
 
 	// Initialize Lua
 	L = luaL_newstate();
@@ -51,6 +53,15 @@ void EditorState::handleInput()
 
 void EditorState::update()
 {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)) type = Tile::Grass;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)) type = Tile::Ground;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)) type = Tile::Stone;
+
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !m_pressed)
+		edit(sf::Mouse::getPosition(m_window));
+
+	if (!sf::Mouse::isButtonPressed(sf::Mouse::Left)) 
+		m_pressed = false;
 }
 
 void EditorState::draw() const
@@ -104,12 +115,29 @@ void EditorState::saveToFile() const
     }
 }
 
+void EditorState::edit(sf::Vector2i position)
+{
+//	m_pressed = true;
+
+	lua_getglobal(L, "setTile");
+	if (lua_isfunction(L, -1))
+	{
+		// temp
+		lua_pushnumber(L, position.x / 32);
+		lua_pushnumber(L, position.y / 32);
+		lua_pushnumber(L, type);
+		lua_pcall(L, 3, 0, 0);
+		loadGrid();
+	}
+	else std::cout << "setTile is not a function" << std::endl;
+}
+
 void EditorState::changeSprite(int type, sf::Vector2i index)
 {
 	m_tiles[index.x][index.y].setTexture(m_resources->tiles[type]);
 	m_tiles[index.x][index.y].setPosition(sf::Vector2f(32 * index.x + 16, 32 * index.y + 16));
 	m_tiles[index.x][index.y].setOrigin(16, 16);
-	m_tiles[index.x][index.y].setRotation((rand() % 3 > 2) ? 270 : ((rand() % 3 > 1) ? 180 : ((rand() % 3 > 0) ? 90 : 0)));
+//	m_tiles[index.x][index.y].setRotation((rand() % 3 > 2) ? 270 : ((rand() % 3 > 1) ? 180 : ((rand() % 3 > 0) ? 90 : 0)));
 }
 
 void EditorState::loadLuaScript()
