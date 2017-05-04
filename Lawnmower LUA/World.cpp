@@ -76,7 +76,7 @@ void World::loadTiles(std::shared_ptr<ResourceManager> resources)
         }
 
 
-        if (map.peek() == '\n')
+        if (map.get() == '\n')
         {
             y = 0;
 			x++;
@@ -91,6 +91,8 @@ void World::loadTiles(std::shared_ptr<ResourceManager> resources)
 
     }
 	
+	std::cout << m_tiles.size() << ", " << m_tiles[0].size() << std::endl;
+
     /*
     for (int x = 0; x < 25; x++)
     {
