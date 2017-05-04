@@ -72,6 +72,7 @@ void Tile::setTileType(tileType type)
 
 	// Setting new texture on sprite
 	m_sprite.setTexture(m_textures->at(type));
+	m_sprite.setRotation((rand() % 3 > 2) ? 270 : ((rand() % 3 > 1) ? 180 : ((rand() % 3 > 0) ? 90 : 0)));
 }
 
 sf::FloatRect Tile::getHitbox() const
