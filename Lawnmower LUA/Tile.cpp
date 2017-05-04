@@ -1,8 +1,8 @@
 #include "Tile.h"
 
-Tile::Tile(std::vector<sf::Texture*>* inTextures, sf::Vector2i index, tileType type)
+Tile::Tile(std::vector<sf::Texture*>* textures, sf::Vector2i index, tileType type)
 {
-	textures = inTextures;
+	m_textures = textures;
 	setTileType(type);
 
 	// temporary

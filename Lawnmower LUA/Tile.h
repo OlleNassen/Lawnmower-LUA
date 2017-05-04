@@ -15,7 +15,7 @@ public:
 		Stone
 	};
 
-	Tile(std::vector<sf::Texture*>* inTextures, sf::Vector2i position, tileType type = Grass);
+	Tile(std::vector<sf::Texture*>* textures, sf::Vector2i position, tileType type = Grass);
 	Tile(const Tile& other);
 	~Tile();
 
@@ -34,7 +34,7 @@ private:
 	tileType m_type;
 	lua_State* L;
 
-	std::vector<sf::Texture*>* textures;
+	std::vector<sf::Texture*>* m_textures;
 	sf::Sprite m_sprite;
 };
 
