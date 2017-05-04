@@ -132,13 +132,13 @@ void World::collision()
 					{
 						if (player->getPosition().y < intersection.top)
 						{
-							player->setPosition(sf::Vector2f(player->getPosition().x, player->getPosition().y - intersection.width * 0.5f));
-							otherPlayer->setPosition(sf::Vector2f(otherPlayer->getPosition().x, otherPlayer->getPosition().y + intersection.width * 0.5f));
+							player->setPosition(sf::Vector2f(player->getPosition().x, player->getPosition().y - intersection.height * 0.5f));
+							otherPlayer->setPosition(sf::Vector2f(otherPlayer->getPosition().x, otherPlayer->getPosition().y + intersection.height * 0.5f));
 						}
 						else
 						{
-							player->setPosition(sf::Vector2f(player->getPosition().x, player->getPosition().y + intersection.width * 0.5f));
-							otherPlayer->setPosition(sf::Vector2f(otherPlayer->getPosition().x, otherPlayer->getPosition().y - intersection.width * 0.5f));
+							player->setPosition(sf::Vector2f(player->getPosition().x, player->getPosition().y + intersection.height * 0.5f));
+							otherPlayer->setPosition(sf::Vector2f(otherPlayer->getPosition().x, otherPlayer->getPosition().y - intersection.height * 0.5f));
 						}
 					}
 				}
