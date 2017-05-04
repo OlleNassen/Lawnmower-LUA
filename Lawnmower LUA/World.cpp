@@ -30,9 +30,11 @@ void World::loadPlayers()
 {
 	Player* one = new Player();
 	one->getSprite()->setColor(sf::Color::Cyan);
+	one->setPosition(sf::Vector2f(200, 50));
 
 	Player* two = new Player();
 	two->getSprite()->setColor(sf::Color::Red);
+	two->setPosition(sf::Vector2f(250, 50));
 
 	m_players.push_back(one);
 	m_players.push_back(two);
@@ -61,7 +63,38 @@ void World::collision()
 		{
 			if (player != otherPlayer)
 			{
-
+				sf::FloatRect intersection;
+				if (player->getHitbox().intersects(otherPlayer->getHitbox(), intersection))
+				{
+					// Fix position in x
+					if (intersection.width < intersection.height)
+					{
+						if (player->getPosition().x < intersection.left)
+						{
+							player->setPosition(sf::Vector2f(player->getPosition().x - intersection.width * 0.5f, player->getPosition().y));
+							otherPlayer->setPosition(sf::Vector2f(otherPlayer->getPosition().x + intersection.width * 0.5f, otherPlayer->getPosition().y));
+						}
+						else
+						{
+							player->setPosition(sf::Vector2f(player->getPosition().x + intersection.width * 0.5f, player->getPosition().y));
+							otherPlayer->setPosition(sf::Vector2f(otherPlayer->getPosition().x - intersection.width * 0.5f, otherPlayer->getPosition().y));
+						}
+					}
+					// Fix position in y
+					else
+					{
+						if (player->getPosition().y < intersection.left)
+						{
+							player->setPosition(sf::Vector2f(player->getPosition().x, player->getPosition().y - intersection.width * 0.5f));
+							otherPlayer->setPosition(sf::Vector2f(otherPlayer->getPosition().x, otherPlayer->getPosition().y + intersection.width * 0.5f));
+						}
+						else
+						{
+							player->setPosition(sf::Vector2f(player->getPosition().x, player->getPosition().y + intersection.width * 0.5f));
+							otherPlayer->setPosition(sf::Vector2f(otherPlayer->getPosition().x, otherPlayer->getPosition().y - intersection.width * 0.5f));
+						}
+					}
+				}
 			}
 		}
 
