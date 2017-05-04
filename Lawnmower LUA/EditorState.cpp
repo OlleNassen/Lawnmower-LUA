@@ -11,11 +11,14 @@ EditorState::EditorState(sf::RenderWindow& window, std::shared_ptr<ResourceManag
 	L = luaL_newstate();
 	luaL_openlibs(L);
 	loadLuaScript();
+
+	loadGrid();
 }
 
 
 EditorState::~EditorState()
 {
+
 }
 
 void EditorState::handleEvents()
@@ -64,4 +67,17 @@ void EditorState::loadLuaScript()
 		std::cout << "Failed to load with message: " << lua_tostring(L, -1) << std::endl;
 		lua_pop(L, 1);
 	}
+}
+
+void EditorState::loadGrid()
+{
+	lua_getglobal(L, "grid");
+	if (lua_istable(L, -1))
+	{
+	//	lua_pcall(L, 0, 2, 0);
+	//	position.x = lua_tonumber(L, -2);
+	//	position.y = lua_tonumber(L, -1);
+	//	lua_pop(L, 2);
+	}
+	else std::cout << "grid is not a table" << std::endl;
 }

@@ -10,6 +10,7 @@ private:
 	lua_State* L;
 
 	void loadLuaScript();
+	void loadGrid();
 public:
     EditorState(sf::RenderWindow& window, std::shared_ptr<ResourceManager> resources);
     ~EditorState();
