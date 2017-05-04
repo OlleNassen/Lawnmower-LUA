@@ -10,8 +10,7 @@ private:
     std::shared_ptr<ResourceManager> m_resources;
 	std::vector<std::vector<sf::Sprite>> m_tiles;
 	lua_State* L;
-	bool m_pressed;
-	Tile::tileType type;
+	Tile::tileType m_type;
 
 	void edit(sf::Vector2i position);
 	void changeSprite(int type, sf::Vector2i index);
