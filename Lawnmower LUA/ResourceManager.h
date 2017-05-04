@@ -6,6 +6,8 @@
 struct ResourceManager
 {
     std::vector<sf::Font> fonts;
+    std::vector<sf::Texture> tiles;
+    std::vector<sf::Texture> lawnmowers;
 
     ResourceManager()
     {
@@ -15,6 +17,19 @@ struct ResourceManager
             std::cout << "Couldn't load file";
         }
         fonts.push_back(font);
+    
+        sf::Texture grass;
+        grass.loadFromFile(".\\Resources\\grass32x32.png");
+        tiles.push_back(grass);
+
+        sf::Texture cutGrass;
+        cutGrass.loadFromFile(".\\Resources\\cut_grass32x32.png");
+        tiles.push_back(cutGrass);
+
+        sf::Texture lawnmower;
+        lawnmower.loadFromFile(".\\Resources\\lawnmower32x32.png");
+        lawnmowers.push_back(lawnmower);
+    
     }
 
 
