@@ -1,6 +1,7 @@
 #pragma once
 #include "State.h"
 #include "lua.hpp"
+#include <fstream>
 
 class EditorState :public State
 {
@@ -23,5 +24,7 @@ public:
 
     void pause() override;
     void resume() override;
+
+    void saveToFile()const;
 };
 

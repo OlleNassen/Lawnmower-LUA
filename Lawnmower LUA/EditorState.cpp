@@ -17,6 +17,8 @@ EditorState::EditorState(sf::RenderWindow& window, std::shared_ptr<ResourceManag
 		m_tiles[i].resize(20);
 
 	loadGrid();
+
+    saveToFile();
 }
 
 
@@ -53,7 +55,13 @@ void EditorState::update()
 
 void EditorState::draw() const
 {
-
+    for (const auto& tiles : m_tiles)
+    {
+        for (const auto& tile : tiles)
+        {
+            m_window.draw(tile);
+        }
+    }
 }
 
 void EditorState::pause()
@@ -62,6 +70,20 @@ void EditorState::pause()
 
 void EditorState::resume()
 {
+}
+
+void EditorState::saveToFile() const
+{
+    std::ofstream out(".\\Resources\\test.txt");
+
+    for (const auto& tiles : m_tiles)
+    {
+        for (const auto& tile : tiles)
+        {
+            //out << 0;
+        }
+        out << '\n';
+    }
 }
 
 void EditorState::changeSprite(int type, sf::Vector2i index)
@@ -89,13 +111,13 @@ void EditorState::loadGrid()
 	lua_getglobal(L, "grid");
 	if (lua_istable(L, -1))
 	{
-		for (int x = 0; x < 20; x++)
+		for (int x = 0; x < 25; x++)
 		{
 			lua_pushnumber(L, x);
 			lua_gettable(L, -2);
 			if (lua_istable(L, -1))
 			{
-				for (int y = 0; y < 25; y++)
+				for (int y = 0; y < 20; y++)
 				{
 					lua_pushnumber(L, y);
 					lua_gettable(L, -2);
