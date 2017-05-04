@@ -42,17 +42,17 @@ void World::loadPlayers(std::shared_ptr<ResourceManager> resources)
 
 void World::loadTiles(std::shared_ptr<ResourceManager> resources)
 {
-    std::ifstream map(".\\map.txt");
+    /*std::ifstream map(".\\map.txt");
 
     unsigned int x = 0;
     unsigned int y = 0;
-    /*
+    
     m_tiles.reserve(25);
     for (int i = 0; i < 25; i++)
     {
         m_tiles[i].reserve(20);
     }
-    */
+    
     while (!map.eof())
     {
         std::vector<Tile*> tiles;
@@ -85,8 +85,8 @@ void World::loadTiles(std::shared_ptr<ResourceManager> resources)
             y++;
         }
 
-    }
-    /*
+    }*/
+    
     for (int x = 0; x < 25; x++)
     {
         std::vector<Tile*>tiles;
@@ -96,7 +96,7 @@ void World::loadTiles(std::shared_ptr<ResourceManager> resources)
         }
         m_tiles.push_back(tiles);
     }
-    */
+    
 }
 
 void World::collision()
