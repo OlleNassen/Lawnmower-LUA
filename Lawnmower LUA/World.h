@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Tile.h"
 #include "Player.h"
 #include "lua.hpp"
@@ -7,6 +6,7 @@
 #include <vector>
 #include "ResourceManager.h"
 #include <memory>
+#include <fstream>
 
 class World: public sf::Drawable
 {
@@ -20,7 +20,7 @@ public:
     World(sf::Vector2i mapSize, std::shared_ptr<ResourceManager> resources);
     virtual ~World();
 
-	void loadPlayers();
+	void loadPlayers(std::shared_ptr<ResourceManager> resources);
     void loadTiles(std::shared_ptr<ResourceManager> resources);
 
     void collision();

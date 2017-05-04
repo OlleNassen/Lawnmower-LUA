@@ -4,7 +4,7 @@ World::World(sf::Vector2i mapSize, std::shared_ptr<ResourceManager> resources)
 {
 	m_mapSize = mapSize;
 
-	loadPlayers();
+	loadPlayers(resources);
 
     loadTiles(resources);
     
@@ -26,13 +26,13 @@ World::~World()
     }
 }
 
-void World::loadPlayers()
+void World::loadPlayers(std::shared_ptr<ResourceManager> resources)
 {
-	Player* one = new Player();
+	Player* one = new Player(resources->fonts[0], resources->lawnmowers[0]);
 	one->getSprite()->setColor(sf::Color::Cyan);
 	one->setPosition(sf::Vector2f(200, 50));
 
-	Player* two = new Player();
+	Player* two = new Player(resources->fonts[0], resources->lawnmowers[0]);
 	two->getSprite()->setColor(sf::Color::Red);
 	two->setPosition(sf::Vector2f(250, 50));
 
@@ -42,6 +42,51 @@ void World::loadPlayers()
 
 void World::loadTiles(std::shared_ptr<ResourceManager> resources)
 {
+    std::ifstream map(".\\map.txt");
+
+    unsigned int x = 0;
+    unsigned int y = 0;
+    /*
+    m_tiles.reserve(25);
+    for (int i = 0; i < 25; i++)
+    {
+        m_tiles[i].reserve(20);
+    }
+    */
+    while (!map.eof())
+    {
+        std::vector<Tile*> tiles;
+
+        int tileNr;
+        map >> tileNr;
+
+        switch (tileNr)
+        {
+        case 0:
+            m_tiles[x][y] = new Tile(&resources->tiles, sf::Vector2i(x, y), Tile::Grass);
+            break;
+
+        case 1:
+            m_tiles[x][y] = new Tile(&resources->tiles, sf::Vector2i(x, y), Tile::Ground);
+            break;
+
+        case 2:
+            m_tiles[x][y] = new Tile(&resources->tiles, sf::Vector2i(x, y), Tile::Stone);
+            break;
+        }
+
+        if (map.peek() == '\n')
+        {
+            x++;
+            y = 0;
+        }
+        else
+        {
+            y++;
+        }
+
+    }
+    /*
     for (int x = 0; x < 25; x++)
     {
         std::vector<Tile*>tiles;
@@ -51,6 +96,7 @@ void World::loadTiles(std::shared_ptr<ResourceManager> resources)
         }
         m_tiles.push_back(tiles);
     }
+    */
 }
 
 void World::collision()
@@ -106,6 +152,7 @@ void World::collision()
                 if (tile->getHitbox().contains(player->getPosition()) && tile->getTileType() == Tile::Grass)
                 {
                     tile->setTileType(Tile::Ground);
+					player->addPoint();
                 }
             }
         }
