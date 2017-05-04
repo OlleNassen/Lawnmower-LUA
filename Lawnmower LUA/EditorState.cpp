@@ -74,13 +74,13 @@ void EditorState::loadGrid()
 	lua_getglobal(L, "grid");
 	if (lua_istable(L, -1))
 	{
-		for (int i = 0; i < 25; i++)
+		for (int i = 0; i < 20; i++)
 		{
 			lua_pushnumber(L, i);
 			lua_gettable(L, -2);
 			if (lua_istable(L, -1))
 			{
-				for (int i = 0; i < 20; i++)
+				for (int i = 0; i < 25; i++)
 				{
 					lua_pushnumber(L, i);
 					lua_gettable(L, -2);
