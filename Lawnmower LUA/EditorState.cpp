@@ -94,13 +94,13 @@ int EditorState::saveToFile(lua_State* L)
 	lua_getglobal(L, "grid");
 	if (lua_istable(L, -1))
 	{
-		for (int x = 0; x < 25; x++)
+		for (int x = 0; x < 20; x++)
 		{
 			lua_pushnumber(L, x);
 			lua_gettable(L, -2);
 			if (lua_istable(L, -1))
 			{
-				for (int y = 0; y < 20; y++)
+				for (int y = 0; y < 25; y++)
 				{
 					lua_pushnumber(L, y);
 					lua_gettable(L, -2);
