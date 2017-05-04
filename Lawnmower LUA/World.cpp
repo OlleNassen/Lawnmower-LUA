@@ -65,12 +65,12 @@ void World::loadTiles(std::shared_ptr<ResourceManager> resources)
             break;
 
         case 1:
-            tiles.push_back(new Tile(&resources->tiles, sf::Vector2i(x, y), Tile::Grass));
+            tiles.push_back(new Tile(&resources->tiles, sf::Vector2i(x, y), Tile::Ground));
             //m_tiles[x][y] = new Tile(&resources->tiles, sf::Vector2i(x, y), Tile::Ground);
             break;
 
         case 2:
-            tiles.push_back(new Tile(&resources->tiles, sf::Vector2i(x, y), Tile::Grass));
+            tiles.push_back(new Tile(&resources->tiles, sf::Vector2i(x, y), Tile::Stone));
             //m_tiles[x][y] = new Tile(&resources->tiles, sf::Vector2i(x, y), Tile::Stone);
             break;
         }
