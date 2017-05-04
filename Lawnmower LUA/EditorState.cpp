@@ -94,18 +94,18 @@ int EditorState::saveToFile(lua_State* L)
 	lua_getglobal(L, "grid");
 	if (lua_istable(L, -1))
 	{
-		for (int x = 0; x < 20; x++)
+		for (int y = 0; y < 20; y++)
 		{
-			lua_pushnumber(L, x);
+			lua_pushnumber(L, y);
 			lua_gettable(L, -2);
 			if (lua_istable(L, -1))
 			{
-				for (int y = 0; y < 25; y++)
+				for (int x = 0; x < 25; x++)
 				{
-					lua_pushnumber(L, y);
+					lua_pushnumber(L, x);
 					lua_gettable(L, -2);
 					out << lua_tointeger(L, -1);
-					if (y != 24) out << ' ';
+					if (x != 24) out << ' ';
 					lua_pop(L, 1);
 				}
 			}
@@ -161,15 +161,15 @@ void EditorState::loadGrid()
 	lua_getglobal(L, "grid");
 	if (lua_istable(L, -1))
 	{
-		for (int x = 0; x < 25; x++)
+		for (int y = 0; y < 20; y++)
 		{
-			lua_pushnumber(L, x);
+			lua_pushnumber(L, y);
 			lua_gettable(L, -2);
 			if (lua_istable(L, -1))
 			{
-				for (int y = 0; y < 20; y++)
+				for (int x = 0; x < 25; x++)
 				{
-					lua_pushnumber(L, y);
+					lua_pushnumber(L, x);
 					lua_gettable(L, -2);
 					changeSprite(lua_tonumber(L, -1), sf::Vector2i(x, y));
 					lua_pop(L, 1);
