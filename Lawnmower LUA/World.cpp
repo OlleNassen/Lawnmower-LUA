@@ -40,10 +40,10 @@ void World::loadPlayers(int nrOfPlayers, std::shared_ptr<ResourceManager> resour
 	// Starting positions of the four players
 	sf::Vector2f position[4] = 
 	{ 
-		sf::Vector2f(0, 0), 
-		sf::Vector2f(800, 0),
-		sf::Vector2f(800, 632), 
-		sf::Vector2f(0, 632) 
+		sf::Vector2f(48, 48), 
+		sf::Vector2f(752, 48),
+		sf::Vector2f(752, 592), 
+		sf::Vector2f(48, 592)
 	};
 
 	// Loading players
