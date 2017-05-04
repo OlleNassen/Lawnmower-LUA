@@ -7,15 +7,15 @@ Player::Player(sf::Font& font, sf::Texture& texture)
 
 	// Setting text
 	m_text.setFont(font);
-	m_text.setOrigin({ 32 / 2, 32 / 2 });
 	m_text.setCharacterSize(15.f);
+	m_text.setOrigin({ m_text.getGlobalBounds().width / 2, m_text.getGlobalBounds().height / 2 });
 
 	// Initialize Lua
 	L = luaL_newstate();
 	luaL_openlibs(L);
 	loadLuaScript();
 
-    m_text.setOutlineThickness(5);
+    m_text.setOutlineThickness(2.5f);
     m_text.setOutlineColor(sf::Color::Black);
 
 }
@@ -56,6 +56,7 @@ void Player::addPoint()
 
 		// Chaning text string
 		m_text.setString(std::to_string(score));
+		m_text.setOrigin({ m_text.getGlobalBounds().width / 2 + m_text.getOutlineThickness() - 5 , 25 + m_text.getGlobalBounds().height / 2 + m_text.getOutlineThickness() });
 	}
 	else std::cout << "Score is not an integer in lua." << std::endl;
 }
