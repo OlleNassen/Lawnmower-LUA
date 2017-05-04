@@ -71,7 +71,7 @@ void Tile::setTileType(tileType type)
 	else std::cout << "setType is not a function" << std::endl;
 
 	// Setting new texture on sprite
-	m_sprite.setTexture(*m_textures->at(type));
+	m_sprite.setTexture(m_textures->at(type));
 }
 
 sf::FloatRect Tile::getHitbox() const
