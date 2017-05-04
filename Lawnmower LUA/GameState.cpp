@@ -55,10 +55,10 @@ void GameState::handleInput()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::L)) horDir[2] = "right";
 
 	// Player Four
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num8)) verDir[3] = "up";
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num5)) verDir[3] = "down";
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num4)) horDir[3] = "left";
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num6)) horDir[3] = "right";
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad8)) verDir[3] = "up";
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad5)) verDir[3] = "down";
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad4)) horDir[3] = "left";
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad6)) horDir[3] = "right";
 
 	// Moving players
 	float delta = 1.f;
