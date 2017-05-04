@@ -6,8 +6,7 @@ EditorState::EditorState(sf::RenderWindow& window, std::shared_ptr<ResourceManag
     :State(window)
 {
     m_resources = resources;
-	m_pressed = false;
-	type = Tile::Stone;
+	m_type = Tile::Stone;
 
 	// Initialize Lua
 	L = luaL_newstate();
@@ -53,15 +52,12 @@ void EditorState::handleInput()
 
 void EditorState::update()
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)) type = Tile::Grass;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)) type = Tile::Ground;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)) type = Tile::Stone;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)) m_type = Tile::Grass;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)) m_type = Tile::Ground;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)) m_type = Tile::Stone;
 
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !m_pressed)
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		edit(sf::Mouse::getPosition(m_window));
-
-	if (!sf::Mouse::isButtonPressed(sf::Mouse::Left)) 
-		m_pressed = false;
 }
 
 void EditorState::draw() const
@@ -112,15 +108,13 @@ void EditorState::saveToFile() const
 
 void EditorState::edit(sf::Vector2i position)
 {
-//	m_pressed = true;
-
 	lua_getglobal(L, "setTile");
 	if (lua_isfunction(L, -1))
 	{
 		// temp
 		lua_pushnumber(L, position.x / 32);
 		lua_pushnumber(L, position.y / 32);
-		lua_pushnumber(L, type);
+		lua_pushnumber(L, m_type);
 		lua_pcall(L, 3, 0, 0);
 		loadGrid();
 	}
