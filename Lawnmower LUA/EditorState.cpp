@@ -18,8 +18,6 @@ EditorState::EditorState(sf::RenderWindow& window, std::shared_ptr<ResourceManag
 		m_tiles[i].resize(20);
 
 	loadGrid();
-
-    saveToFile();
 }
 
 
@@ -97,6 +95,9 @@ int EditorState::saveToFile(lua_State* L)
     {
         for (int y = 0; y < 25; y++)
         {
+			out << 0;
+			out << ' ';
+			/*
             if (m_tiles[y][x].getTexture() == &m_resources->tiles[0]) // Grass
             {
                 out << 0;
@@ -114,9 +115,12 @@ int EditorState::saveToFile(lua_State* L)
                 out << 2;
                 out << ' ';
             }
+			*/
         }
         out << '\n';
     }
+
+	return 0;
 }
 
 void EditorState::edit(sf::Vector2i position)
