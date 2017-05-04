@@ -49,6 +49,13 @@ void EditorState::update()
 
 void EditorState::draw() const
 {
+    for (const auto& tiles : m_tiles)
+    {
+        for (const auto& tile : tiles)
+        {
+            m_window.draw(tile);
+        }
+    }
 }
 
 void EditorState::pause()
