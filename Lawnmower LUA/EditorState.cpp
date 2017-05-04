@@ -13,6 +13,8 @@ EditorState::EditorState(sf::RenderWindow& window, std::shared_ptr<ResourceManag
 	loadLuaScript();
 
 	loadGrid();
+
+    saveToFile();
 }
 
 
@@ -64,6 +66,20 @@ void EditorState::pause()
 
 void EditorState::resume()
 {
+}
+
+void EditorState::saveToFile() const
+{
+    std::ofstream out(".\\Resources\\test.txt");
+
+    for (const auto& tiles : m_tiles)
+    {
+        for (const auto& tile : tiles)
+        {
+            //out << 0;
+        }
+        out << '\n';
+    }
 }
 
 void EditorState::loadLuaScript()
