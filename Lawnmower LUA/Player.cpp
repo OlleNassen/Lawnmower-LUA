@@ -127,6 +127,20 @@ sf::Vector2f Player::getPosition() const
 	return position;
 }
 
+void Player::setPosition(sf::Vector2f position)
+{
+	lua_getglobal(L, "setPosition");
+	if (lua_isfunction(L, -1))
+	{
+		lua_pushnumber(L, position.x);
+		lua_pushnumber(L, position.y);
+		lua_pcall(L, 2, 0, 0);
+	}
+	else std::cout << "setPosition is not a function" << std::endl;
+
+	updatePosition();
+}
+
 void Player::loadLuaScript()
 {
 	int error = luaL_dofile(L, "Scripts/player.lua");

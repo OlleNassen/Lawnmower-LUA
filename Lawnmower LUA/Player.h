@@ -21,6 +21,7 @@ public:
 
 	sf::Sprite* getSprite();
 	sf::Vector2f Player::getPosition() const;
+	void Player::setPosition(sf::Vector2f position);
 	sf::FloatRect getHitbox() const;
 private:
 	void loadLuaScript();

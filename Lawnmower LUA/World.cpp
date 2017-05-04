@@ -55,6 +55,17 @@ void World::collision()
 {
     for (auto& player : m_players)
     {
+
+		// Player - Player collision
+		for (auto& otherPlayer : m_players)
+		{
+			if (player != otherPlayer)
+			{
+
+			}
+		}
+
+		// Player - Tile collision
         for (auto& tiles : m_tiles)
         {
             for (auto& tile : tiles)
