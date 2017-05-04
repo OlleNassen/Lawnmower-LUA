@@ -1,5 +1,5 @@
 ﻿position = {x = 200, y = 50}
-speed = 3
+speed = 4
 score = 0
 
 function setPosition(x, y)
