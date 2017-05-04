@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Tile.h"
 #include "Player.h"
 #include "lua.hpp"
@@ -7,6 +6,7 @@
 #include <vector>
 #include "ResourceManager.h"
 #include <memory>
+#include <fstream>
 
 class World: public sf::Drawable
 {
