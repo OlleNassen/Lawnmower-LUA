@@ -26,6 +26,10 @@ struct ResourceManager
         cutGrass.loadFromFile(".\\Resources\\cut_grass32x32.png");
         tiles.push_back(cutGrass);
 
+		sf::Texture stone;
+		cutGrass.loadFromFile(".\\Resources\\stone32x32.png");
+		tiles.push_back(cutGrass);
+
         sf::Texture lawnmower;
         lawnmower.loadFromFile(".\\Resources\\lawnmower32x32.png");
         lawnmowers.push_back(lawnmower);
