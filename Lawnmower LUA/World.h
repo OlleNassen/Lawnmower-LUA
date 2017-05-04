@@ -6,6 +6,7 @@
 #include <SFML\Graphics.hpp>
 #include <vector>
 #include "ResourceManager.h"
+#include <memory>
 
 class World: public sf::Drawable
 {
@@ -16,11 +17,11 @@ private:
 	sf::Vector2i m_mapSize;
 
 public:
-    World(sf::Vector2i mapSize, ResourceManager* resources);
+    World(sf::Vector2i mapSize, std::shared_ptr<ResourceManager> resources);
     virtual ~World();
 
 	void loadPlayers();
-    void loadTiles(ResourceManager* resources);
+    void loadTiles(std::shared_ptr<ResourceManager> resources);
 
     void collision();
 

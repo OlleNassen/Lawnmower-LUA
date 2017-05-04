@@ -1,6 +1,6 @@
 #include "World.h"
 
-World::World(sf::Vector2i mapSize, ResourceManager* resources)
+World::World(sf::Vector2i mapSize, std::shared_ptr<ResourceManager> resources)
 {
 	m_mapSize = mapSize;
 
@@ -38,7 +38,7 @@ void World::loadPlayers()
 	m_players.push_back(two);
 }
 
-void World::loadTiles(ResourceManager* resources)
+void World::loadTiles(std::shared_ptr<ResourceManager> resources)
 {
     for (int x = 0; x < 25; x++)
     {
