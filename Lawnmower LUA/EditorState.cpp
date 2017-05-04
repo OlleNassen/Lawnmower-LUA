@@ -56,6 +56,16 @@ void EditorState::update()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)) m_type = Tile::Ground;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)) m_type = Tile::Stone;
 
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+	{
+		lua_getglobal(L, "saveToFile");
+		if (lua_isfunction(L, -1))
+		{
+			lua_pcall(L, 0, 0, 0);
+		}
+		else std::cout << "saveTofile is not a function" << std::endl;
+	}
+
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		edit(sf::Mouse::getPosition(m_window));
 }
