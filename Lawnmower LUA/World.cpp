@@ -44,13 +44,7 @@ void World::loadTiles(std::shared_ptr<ResourceManager> resources)
 
     unsigned int x = 0;
     unsigned int y = 0;
-    /*
-    m_tiles.reserve(25);
-    for (int i = 0; i < 25; i++)
-    {
-        m_tiles[i].reserve(20);
-    }
-    */
+    
     while (!map.eof())
     {
         std::vector<Tile*> tiles;
@@ -61,15 +55,18 @@ void World::loadTiles(std::shared_ptr<ResourceManager> resources)
         switch (tileNr)
         {
         case 0:
-            m_tiles[x][y] = new Tile(&resources->tiles, sf::Vector2i(x, y), Tile::Grass);
+            tiles.push_back(new Tile(&resources->tiles, sf::Vector2i(x, y), Tile::Grass));
+            //m_tiles[x][y] = new Tile(&resources->tiles, sf::Vector2i(x, y), Tile::Grass);
             break;
 
         case 1:
-            m_tiles[x][y] = new Tile(&resources->tiles, sf::Vector2i(x, y), Tile::Ground);
+            tiles.push_back(new Tile(&resources->tiles, sf::Vector2i(x, y), Tile::Grass));
+            //m_tiles[x][y] = new Tile(&resources->tiles, sf::Vector2i(x, y), Tile::Ground);
             break;
 
         case 2:
-            m_tiles[x][y] = new Tile(&resources->tiles, sf::Vector2i(x, y), Tile::Stone);
+            tiles.push_back(new Tile(&resources->tiles, sf::Vector2i(x, y), Tile::Grass));
+            //m_tiles[x][y] = new Tile(&resources->tiles, sf::Vector2i(x, y), Tile::Stone);
             break;
         }
 
@@ -77,6 +74,8 @@ void World::loadTiles(std::shared_ptr<ResourceManager> resources)
         {
             x++;
             y = 0;
+            m_tiles.push_back(tiles);
+            tiles.clear();
         }
         else
         {
