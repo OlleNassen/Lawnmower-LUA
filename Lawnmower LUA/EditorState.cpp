@@ -89,23 +89,23 @@ void EditorState::saveToFile() const
 
     std::cout << m_tiles.size();
 
-    for (int x = 0; x < m_tiles.size(); x++)
+    for (int x = 0; x < 20; x++)
     {
-        for (int y = 0; y < m_tiles[x].size(); y++)
+        for (int y = 0; y < 25; y++)
         {
-            if (m_tiles[x][y].getTexture() == &m_resources->tiles[0]) // Grass
+            if (m_tiles[y][x].getTexture() == &m_resources->tiles[0]) // Grass
             {
                 out << 0;
                 out << ' ';
             }
 
-            else if (m_tiles[x][y].getTexture() == &m_resources->tiles[1]) // Cut grass
+            else if (m_tiles[y][x].getTexture() == &m_resources->tiles[1]) // Cut grass
             {
                 out << 1;
                 out << ' ';
             }
 
-            else if (m_tiles[x][y].getTexture() == &m_resources->tiles[2]) // Stone
+            else if (m_tiles[y][x].getTexture() == &m_resources->tiles[2]) // Stone
             {
                 out << 2;
                 out << ' ';
