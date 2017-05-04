@@ -5,6 +5,7 @@
 #include "lua.hpp"
 #include <SFML\Graphics.hpp>
 #include <vector>
+#include "ResourceManager.h"
 
 class World: public sf::Drawable
 {
