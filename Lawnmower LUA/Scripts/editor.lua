@@ -1,17 +1,13 @@
 grid = {}
-for x = 0, 20 do
+for x = 0, 25 do
     grid[x] = {}
-    for y = 0, 25 do
+    for y = 0, 20 do
         grid[x][y] = 1
     end
 end
 
 function setTile(x, y, type)
-	grid[y][x] = type
-end
-
-function getGrid(x)
-	return grid[x]
+	grid[x][y] = type
 end
 
 function saveToFile()

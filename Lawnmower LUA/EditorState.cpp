@@ -81,15 +81,15 @@ void EditorState::loadGrid()
 	lua_getglobal(L, "grid");
 	if (lua_istable(L, -1))
 	{
-		for (int i = 0; i < 20; i++)
+		for (int x = 0; x < 25; x++)
 		{
-			lua_pushnumber(L, i);
+			lua_pushnumber(L, x);
 			lua_gettable(L, -2);
 			if (lua_istable(L, -1))
 			{
-				for (int i = 0; i < 25; i++)
+				for (int y = 0; y < 20; y++)
 				{
-					lua_pushnumber(L, i);
+					lua_pushnumber(L, y);
 					lua_gettable(L, -2);
 					std::cout << lua_tonumber(L, -1);
 					lua_pop(L, 1);
