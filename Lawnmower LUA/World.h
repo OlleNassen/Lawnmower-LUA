@@ -20,7 +20,7 @@ public:
     World(sf::Vector2i mapSize, std::shared_ptr<ResourceManager> resources);
     virtual ~World();
 
-	void loadPlayers(std::shared_ptr<ResourceManager> resources);
+	void loadPlayers(int nrOfPlayers, std::shared_ptr<ResourceManager> resources);
     void loadTiles(std::shared_ptr<ResourceManager> resources);
 
     void collision();

@@ -4,7 +4,7 @@ World::World(sf::Vector2i mapSize, std::shared_ptr<ResourceManager> resources)
 {
 	m_mapSize = mapSize;
 
-	loadPlayers(resources);
+	loadPlayers(4, resources);
 
     loadTiles(resources);
     
@@ -26,18 +26,34 @@ World::~World()
     }
 }
 
-void World::loadPlayers(std::shared_ptr<ResourceManager> resources)
+void World::loadPlayers(int nrOfPlayers, std::shared_ptr<ResourceManager> resources)
 {
-	Player* one = new Player(resources->fonts[0], resources->lawnmowers[0]);
-	one->getSprite()->setColor(sf::Color::Cyan);
-	one->setPosition(sf::Vector2f(200, 50));
+	// Color of the four players
+	sf::Color color[4] = 
+	{ 
+		sf::Color::Cyan,
+		sf::Color::Red,	
+		sf::Color::Green,
+		sf::Color::Yellow
+	};
 
-	Player* two = new Player(resources->fonts[0], resources->lawnmowers[0]);
-	two->getSprite()->setColor(sf::Color::Red);
-	two->setPosition(sf::Vector2f(250, 50));
+	// Starting positions of the four players
+	sf::Vector2f position[4] = 
+	{ 
+		sf::Vector2f(0, 0), 
+		sf::Vector2f(800, 0),
+		sf::Vector2f(800, 632), 
+		sf::Vector2f(0, 632) 
+	};
 
-	m_players.push_back(one);
-	m_players.push_back(two);
+	// Loading players
+	for (int i = 0; i < nrOfPlayers; i++)
+	{
+		Player* player = new Player(resources->fonts[0], resources->lawnmowers[0]);
+		player->getSprite()->setColor(color[i]);
+		player->setPosition(position[i]);
+		m_players.push_back(player);
+	}
 }
 
 void World::loadTiles(std::shared_ptr<ResourceManager> resources)
