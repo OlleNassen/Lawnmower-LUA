@@ -91,7 +91,20 @@ void EditorState::saveToFile() const
     {
         for (const auto& tile : tiles)
         {
-            //out << 0;
+            if (tile.getTexture() == &m_resources->tiles[0]) // Grass
+            {
+                out << 0;
+            }
+
+            else if (tile.getTexture() == &m_resources->tiles[1]) // Cut grass
+            {
+                out << 1;
+            }
+
+            else if (tile.getTexture() == &m_resources->tiles[2]) // Stone
+            {
+                out << 2;
+            }
         }
         out << '\n';
     }
