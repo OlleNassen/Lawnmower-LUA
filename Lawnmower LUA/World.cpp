@@ -42,13 +42,13 @@ void World::loadPlayers(std::shared_ptr<ResourceManager> resources)
 
 void World::loadTiles(std::shared_ptr<ResourceManager> resources)
 {
-	
+
     std::ifstream map(".\\Resources\\map.txt");
 
     unsigned int x = 0;
     unsigned int y = 0;
 
-	std::vector<Tile*> tiles;
+    std::vector<Tile*> tiles;
     while (!map.eof())
     {
 
@@ -59,7 +59,7 @@ void World::loadTiles(std::shared_ptr<ResourceManager> resources)
 
         switch (tileNr)
         {
-		case 0:
+        case 0:
             tiles.push_back(new Tile(&resources->tiles, sf::Vector2i(x, y), Tile::Grass));
             //m_tiles[x][y] = new Tile(&resources->tiles, sf::Vector2i(x, y), Tile::Grass);
             break;
@@ -79,7 +79,7 @@ void World::loadTiles(std::shared_ptr<ResourceManager> resources)
         if (map.peek() == '\n')
         {
             x = 0;
-			y++;
+            y++;
             m_tiles.push_back(tiles);
             tiles.clear();
             std::cout << std::endl;
@@ -90,8 +90,8 @@ void World::loadTiles(std::shared_ptr<ResourceManager> resources)
         }
 
     }
-	
-	std::cout << m_tiles.size() << ", " << m_tiles[0].size() << std::endl;
+
+    std::cout << m_tiles.size() << ", " << m_tiles[0].size() << std::endl;
 
     /*
     for (int x = 0; x < 25; x++)
