@@ -141,3 +141,8 @@ void Player::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
 	target.draw(m_sprite, states);
 }
+
+sf::FloatRect Player::getHitbox() const
+{
+	return m_sprite.getGlobalBounds();
+}
