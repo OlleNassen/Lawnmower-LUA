@@ -16,6 +16,7 @@ public:
 	void update();
 	void updatePosition();
 
+	void addPoint();
 	void collision(sf::Vector2i mapSize);
 	void move(float delta, std::string horizontalDir, std::string verticalDir);
 

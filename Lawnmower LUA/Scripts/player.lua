@@ -24,10 +24,6 @@ function collision(mx, my)
 
 end
 
-function addScore()
-	score = score + 1
-end
-
 function move(delta, verticalDir, horizontalDir)
 
     if horizontalDir == 'left' then 
