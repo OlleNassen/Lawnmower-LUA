@@ -55,8 +55,6 @@ void World::loadTiles(std::shared_ptr<ResourceManager> resources)
         int tileNr;
         map >> tileNr;
 
-        std::cout << tileNr;
-
         switch (tileNr)
         {
         case 0:
@@ -82,7 +80,6 @@ void World::loadTiles(std::shared_ptr<ResourceManager> resources)
             y++;
             m_tiles.push_back(tiles);
             tiles.clear();
-            std::cout << std::endl;
         }
         else
         {
@@ -91,7 +88,6 @@ void World::loadTiles(std::shared_ptr<ResourceManager> resources)
 
     }
 
-    std::cout << m_tiles.size() << ", " << m_tiles[0].size() << std::endl;
 
     /*
     for (int x = 0; x < 25; x++)
