@@ -29,6 +29,6 @@ public:
     void pause() override;
     void resume() override;
 
-    void saveToFile()const;
+    static int saveToFile(lua_State* L);
 };
 
