@@ -3,7 +3,7 @@
 
 
 GameState::GameState(sf::RenderWindow& window, std::shared_ptr<ResourceManager> resources)
-    :State(window), m_world(sf::Vector2i(window.getSize()))
+    :State(window), m_world(sf::Vector2i(window.getSize()), resources)
 {
     m_resources = resources;
 }
