@@ -12,6 +12,10 @@ EditorState::EditorState(sf::RenderWindow& window, std::shared_ptr<ResourceManag
 	luaL_openlibs(L);
 	loadLuaScript();
 
+	m_tiles.resize(25);
+	for (int i = 0; i < 25; i++)
+		m_tiles[i].resize(20);
+
 	loadGrid();
 }
 
@@ -49,6 +53,7 @@ void EditorState::update()
 
 void EditorState::draw() const
 {
+
 }
 
 void EditorState::pause()
@@ -57,6 +62,14 @@ void EditorState::pause()
 
 void EditorState::resume()
 {
+}
+
+void EditorState::changeSprite(int type, sf::Vector2i index)
+{
+	m_tiles[index.y][index.x].setTexture(m_resources->tiles[type]);
+	m_tiles[index.y][index.x].setPosition(sf::Vector2f(32 * index.x + 16, 32 * index.y + 16));
+	m_tiles[index.y][index.x].setOrigin(16, 16);
+	m_tiles[index.y][index.x].setRotation((rand() % 3 > 2) ? 270 : ((rand() % 3 > 1) ? 180 : ((rand() % 3 > 0) ? 90 : 0)));
 }
 
 void EditorState::loadLuaScript()
@@ -69,22 +82,24 @@ void EditorState::loadLuaScript()
 	}
 }
 
+
+
 void EditorState::loadGrid()
 {
 	lua_getglobal(L, "grid");
 	if (lua_istable(L, -1))
 	{
-		for (int i = 0; i < 20; i++)
+		for (int x = 0; x < 20; x++)
 		{
-			lua_pushnumber(L, i);
+			lua_pushnumber(L, x);
 			lua_gettable(L, -2);
 			if (lua_istable(L, -1))
 			{
-				for (int i = 0; i < 25; i++)
+				for (int y = 0; y < 25; y++)
 				{
-					lua_pushnumber(L, i);
+					lua_pushnumber(L, y);
 					lua_gettable(L, -2);
-					std::cout << lua_tonumber(L, -1);
+					changeSprite(lua_tonumber(L, -1), sf::Vector2i(x, y));
 					lua_pop(L, 1);
 				}
 			}

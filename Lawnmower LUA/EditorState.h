@@ -9,6 +9,7 @@ private:
 	std::vector<std::vector<sf::Sprite>> m_tiles;
 	lua_State* L;
 
+	void changeSprite(int type, sf::Vector2i index);
 	void loadLuaScript();
 	void loadGrid();
 public:
