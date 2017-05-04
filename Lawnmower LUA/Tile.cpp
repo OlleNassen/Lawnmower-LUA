@@ -2,7 +2,6 @@
 
 Tile::Tile(std::vector<sf::Texture*>* inTextures, sf::Vector2i index, tileType type)
 {
-	m_type = type;
 	textures = inTextures;
 	setTileType(type);
 
@@ -54,7 +53,6 @@ void Tile::checkIfCut()
 	else std::cout << "getType is not a function" << std::endl;
 	if (m_type != type)
 	{
-		m_type = type;
 		setTileType(type);
 	}
 }
@@ -62,6 +60,8 @@ void Tile::checkIfCut()
 Tile::tileType Tile::getTileType() const { return m_type; }
 void Tile::setTileType(tileType type) 
 {
+	m_type = type;
+
 	lua_getglobal(L, "setType");
 	if (lua_isfunction(L, -1))
 	{
