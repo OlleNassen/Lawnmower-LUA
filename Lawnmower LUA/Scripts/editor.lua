@@ -2,7 +2,7 @@ grid = {}
 for x = 0, 25 do
     grid[x] = {}
     for y = 0, 20 do
-        grid[x][y] = 1
+        grid[x][y] = 0
     end
 end
 

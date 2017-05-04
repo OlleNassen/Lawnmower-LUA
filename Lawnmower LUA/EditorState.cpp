@@ -7,7 +7,7 @@ EditorState::EditorState(sf::RenderWindow& window, std::shared_ptr<ResourceManag
 {
     m_resources = resources;
 	m_pressed = false;
-	type = Tile::Grass;
+	type = Tile::Stone;
 
 	// Initialize Lua
 	L = luaL_newstate();
