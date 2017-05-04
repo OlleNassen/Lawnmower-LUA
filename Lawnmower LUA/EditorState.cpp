@@ -89,11 +89,9 @@ void EditorState::resume()
 {
 }
 
-void EditorState::saveToFile() const
+int EditorState::saveToFile(lua_State* L)
 {
     std::ofstream out(".\\Resources\\test.txt");
-
-    std::cout << m_tiles.size();
 
     for (int x = 0; x < 20; x++)
     {
