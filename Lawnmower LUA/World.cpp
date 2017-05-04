@@ -4,7 +4,7 @@ World::World(sf::Vector2i mapSize, std::shared_ptr<ResourceManager> resources)
 {
 	m_mapSize = mapSize;
 
-	loadPlayers();
+	loadPlayers(resources);
 
     loadTiles(resources);
     
@@ -26,12 +26,12 @@ World::~World()
     }
 }
 
-void World::loadPlayers()
+void World::loadPlayers(std::shared_ptr<ResourceManager> resources)
 {
-	Player* one = new Player();
+	Player* one = new Player(resources->fonts[0], resources->lawnmowers[0]);
 	one->getSprite()->setColor(sf::Color::Cyan);
 
-	Player* two = new Player();
+	Player* two = new Player(resources->fonts[0], resources->lawnmowers[0]);
 	two->getSprite()->setColor(sf::Color::Red);
 
 	m_players.push_back(one);

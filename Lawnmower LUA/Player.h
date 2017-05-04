@@ -8,11 +8,10 @@
 class Player : public sf::Drawable, sf::Transformable
 {
 public:
-	Player();
+	Player(sf::Font& font, sf::Texture& texture);
 	Player(const Player& other);
 	~Player();
 	
-	bool loadTexture(std::string path);
 	void update();
 	void updatePosition();
 
@@ -27,8 +26,8 @@ private:
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 	lua_State* L;
-	sf::Texture m_texture;
 	sf::Sprite m_sprite;
+	sf::Text m_text;
 };
 
 
