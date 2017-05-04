@@ -150,6 +150,9 @@ void EditorState::loadLuaScript()
 		std::cout << "Failed to load with message: " << lua_tostring(L, -1) << std::endl;
 		lua_pop(L, 1);
 	}
+
+	lua_pushcfunction(L, saveToFile);
+	lua_setglobal(L, "save");
 }
 
 void EditorState::loadGrid()
