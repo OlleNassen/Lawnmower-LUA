@@ -89,7 +89,7 @@ void EditorState::resume()
 
 int EditorState::saveToFile(lua_State* L)
 {
-    std::ofstream out(".\\Resources\\test.txt");
+    std::ofstream out(".\\Resources\\map.txt");
 
 	lua_getglobal(L, "grid");
 	if (lua_istable(L, -1))
@@ -105,7 +105,7 @@ int EditorState::saveToFile(lua_State* L)
 					lua_pushnumber(L, y);
 					lua_gettable(L, -2);
 					out << lua_tointeger(L, -1);
-					out << ' ';
+					if (y != 24) out << ' ';
 					lua_pop(L, 1);
 				}
 			}
