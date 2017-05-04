@@ -52,14 +52,14 @@ void World::loadTiles(std::shared_ptr<ResourceManager> resources)
     {
         std::vector<Tile*> tiles;
 
-        int tileNr;
-        map >> tileNr;
+        char tileNr;
+        map.get(tileNr);
 
         std::cout << tileNr;
 
-        switch (tileNr)
+        switch (tileNr - '0')
         {
-        case 0:
+		case 0:
             tiles.push_back(new Tile(&resources->tiles, sf::Vector2i(x, y), Tile::Grass));
             //m_tiles[x][y] = new Tile(&resources->tiles, sf::Vector2i(x, y), Tile::Grass);
             break;
@@ -75,10 +75,11 @@ void World::loadTiles(std::shared_ptr<ResourceManager> resources)
             break;
         }
 
+
         if (map.peek() == '\n')
         {
-            x++;
             y = 0;
+			x++;
             m_tiles.push_back(tiles);
             tiles.clear();
             std::cout << std::endl;
