@@ -91,34 +91,31 @@ int EditorState::saveToFile(lua_State* L)
 {
     std::ofstream out(".\\Resources\\test.txt");
 
-    for (int x = 0; x < 20; x++)
-    {
-        for (int y = 0; y < 25; y++)
-        {
-			out << 0;
-			out << ' ';
-			/*
-            if (m_tiles[y][x].getTexture() == &m_resources->tiles[0]) // Grass
-            {
-                out << 0;
-                out << ' ';
-            }
+	lua_getglobal(L, "grid");
+	if (lua_istable(L, -1))
+	{
+		for (int x = 0; x < 25; x++)
+		{
+			lua_pushnumber(L, x);
+			lua_gettable(L, -2);
+			if (lua_istable(L, -1))
+			{
+				for (int y = 0; y < 20; y++)
+				{
+					lua_pushnumber(L, y);
+					lua_gettable(L, -2);
+					out << lua_tointeger(L, -1);
+					out << ' ';
+					lua_pop(L, 1);
+				}
+			}
+			else std::cout << "grid is not a table" << std::endl;
 
-            else if (m_tiles[y][x].getTexture() == &m_resources->tiles[1]) // Cut grass
-            {
-                out << 1;
-                out << ' ';
-            }
-
-            else if (m_tiles[y][x].getTexture() == &m_resources->tiles[2]) // Stone
-            {
-                out << 2;
-                out << ' ';
-            }
-			*/
-        }
-        out << '\n';
-    }
+			lua_pop(L, 1);
+			out << '\n';
+		}
+	}
+	else std::cout << "grid is not a table" << std::endl;
 
 	return 0;
 }
