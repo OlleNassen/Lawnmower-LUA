@@ -181,6 +181,7 @@
     <Font Include="Resources\font.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Scripts\editor.lua" />
     <None Include="Scripts\player.lua" />
     <None Include="Scripts\tile.lua" />
   </ItemGroup>
