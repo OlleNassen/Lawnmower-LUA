@@ -61,7 +61,7 @@ void World::collision()
             {
                 if (tile->getHitbox().contains(player->getPosition()) && tile->getTileType() == Tile::Grass)
                 {
-                    tile->setTileType(Tile::Stone);
+                    tile->setTileType(Tile::Ground);
                 }
             }
         }
