@@ -47,10 +47,10 @@ void World::loadTiles(std::shared_ptr<ResourceManager> resources)
 
     unsigned int x = 0;
     unsigned int y = 0;
-    
+
+	std::vector<Tile*> tiles;
     while (!map.eof())
     {
-        std::vector<Tile*> tiles;
 
         char tileNr;
         map.get(tileNr);
