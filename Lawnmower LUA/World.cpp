@@ -1,12 +1,12 @@
 #include "World.h"
 
-World::World(sf::Vector2i mapSize)
+World::World(sf::Vector2i mapSize, ResourceManager* resources)
 {
 	m_mapSize = mapSize;
 
 	loadPlayers();
 
-    loadTiles();
+    loadTiles(resources);
     
 }
 
@@ -38,14 +38,14 @@ void World::loadPlayers()
 	m_players.push_back(two);
 }
 
-void World::loadTiles()
+void World::loadTiles(ResourceManager* resources)
 {
     for (int x = 0; x < 25; x++)
     {
         std::vector<Tile*>tiles;
         for (int y = 0; y < 20; y++)
         {
-            tiles.push_back(new Tile((y > 5) ? ".\\Resources\\grass32x32.png" : ".\\Resources\\cut_grass32x32.png", sf::Vector2i(x, y), Tile::Grass));
+            tiles.push_back(new Tile(resources->tiles, (y > 5) ? ".\\Resources\\grass32x32.png" : ".\\Resources\\cut_grass32x32.png", sf::Vector2i(x, y), Tile::Grass));
         }
         m_tiles.push_back(tiles);
     }

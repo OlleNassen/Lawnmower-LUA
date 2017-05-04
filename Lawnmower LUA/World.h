@@ -16,11 +16,11 @@ private:
 	sf::Vector2i m_mapSize;
 
 public:
-    World(sf::Vector2i mapSize);
+    World(sf::Vector2i mapSize, ResourceManager* resources);
     virtual ~World();
 
 	void loadPlayers();
-    void loadTiles();
+    void loadTiles(ResourceManager* resources);
 
     void collision();
 
