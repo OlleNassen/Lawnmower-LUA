@@ -15,6 +15,9 @@ Player::Player(sf::Font& font, sf::Texture& texture)
 	luaL_openlibs(L);
 	loadLuaScript();
 
+    m_text.setOutlineThickness(5);
+    m_text.setOutlineColor(sf::Color::Black);
+
 }
 
 Player::Player(const Player & other) { }
