@@ -15,11 +15,10 @@ public:
 		Stone
 	};
 
-	Tile(std::string texturePath, sf::Vector2i position, tileType type = Grass);
+	Tile(std::vector<sf::Texture*>* inTextures, sf::Vector2i position, tileType type = Grass);
 	Tile(const Tile& other);
 	~Tile();
 
-	bool loadTexture(std::string path);
 	void update();
 
 	tileType getTileType() const;
@@ -35,9 +34,7 @@ private:
 	tileType m_type;
 	lua_State* L;
 
-	sf::Texture* m_textureGrass;
-	sf::Texture* m_textureGround;
-	sf::Texture* m_textureStone;
+	std::vector<sf::Texture*>* textures;
 	sf::Sprite m_sprite;
 };
 

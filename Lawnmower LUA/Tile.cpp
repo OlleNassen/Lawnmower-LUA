@@ -1,9 +1,10 @@
 #include "Tile.h"
 
-Tile::Tile(std::string texturePath, sf::Vector2i index, tileType type)
+Tile::Tile(std::vector<sf::Texture*>* inTextures, sf::Vector2i index, tileType type)
 {
 	m_type = type;
-	loadTexture(texturePath);
+	textures = inTextures;
+	setTileType(type);
 
 	// temporary
 	m_sprite.setPosition(sf::Vector2f(32 * index.x + 16, 32 * index.y + 16));
@@ -19,15 +20,6 @@ Tile::Tile(std::string texturePath, sf::Vector2i index, tileType type)
 Tile::Tile(const Tile & other) { }
 
 Tile::~Tile() { }
-
-bool Tile::loadTexture(std::string path)
-{
-	if (!m_texture.loadFromFile(path))
-		return false;
-
-	m_sprite.setTexture(m_texture);
-	return true;
-}
 
 void Tile::update()
 {
@@ -63,22 +55,7 @@ void Tile::checkIfCut()
 	if (m_type != type)
 	{
 		m_type = type;
-		switch (type)
-		{
-		case Grass: 
-			m_sprite.setColor(sf::Color::Black); 
-			m_sprite.setTexture(*m_textureGrass); 
-			break;
-		case Ground: 
-			m_sprite.setColor(sf::Color::Red);
-			m_sprite.setTexture(*m_textureGround); 
-			break;
-		case Stone:
-			m_sprite.setColor(sf::Color::Cyan);
-			m_sprite.setTexture(*m_textureStone);
-			break;
-		}
-
+		setTileType(type);
 	}
 }
 
@@ -92,6 +69,9 @@ void Tile::setTileType(tileType type)
 		lua_pcall(L, 1, 0, 0);
 	}
 	else std::cout << "setType is not a function" << std::endl;
+
+	// Setting new texture on sprite
+	m_sprite.setTexture(*textures->at(type));
 }
 
 sf::FloatRect Tile::getHitbox() const
