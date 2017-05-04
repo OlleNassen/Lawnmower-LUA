@@ -84,6 +84,7 @@
     <None Include="Scripts\tile.lua">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Scripts\editor.lua" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\map.txt">
