@@ -75,7 +75,7 @@ void Player::collision(sf::Vector2i mapSize)
 
 void Player::collisionWithTiles(std::vector<std::vector<Tile*>>* tiles)
 {
-	int isGrass = 0;
+	bool isGrass = 0;
 	lua_getglobal(L, "collisionWithTile");
 	if (lua_isfunction(L, -1))
 	{
@@ -90,9 +90,9 @@ void Player::collisionWithTiles(std::vector<std::vector<Tile*>>* tiles)
 				lua_pushnumber(L, static_cast<int>(tile->getTileType()));
 				lua_pcall(L, 4, 1, 0);
 
-				isGrass = 0;
-				isGrass = lua_tonumber(L, -1);
-				if (isGrass == 5)
+				isGrass = false;
+				isGrass = lua_toboolean(L, -1);
+				if (isGrass)
 					tile->setTileType(Tile::Ground);
 			}
 		}
