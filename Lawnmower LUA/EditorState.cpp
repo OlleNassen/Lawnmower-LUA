@@ -16,7 +16,7 @@ EditorState::EditorState(sf::RenderWindow& window, std::shared_ptr<ResourceManag
 	m_textInfo.setFont(m_resources->fonts[0]);
 	m_textInfo.setCharacterSize(15);
 	m_textInfo.setString("Esq: Back\nS: Save\n1: Grass\n2: Ground\n3: Stone");
-	m_textInfo.setPosition(10, 0);
+	m_textInfo.setPosition(5, 0);
 
 	// Initialize Lua
 	L = luaL_newstate();
