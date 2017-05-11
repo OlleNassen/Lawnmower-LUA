@@ -83,6 +83,7 @@ function collisionWithTile(tilePosx, tilePosy, tileSize, type)
 		position.y - tileSize / 2 > tilePosy - tileSize / 2 then
 
 		if type == 0 then
+			score = score + 1
 			return true
 		end
 	end

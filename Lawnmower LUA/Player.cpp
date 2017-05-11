@@ -41,26 +41,6 @@ void Player::updatePosition()
 	m_text.setPosition(pos);
 }
 
-void Player::addPoint()
-{
-	lua_getglobal(L, "score");
-	if (lua_isinteger(L, -1))
-	{
-		// Adding one score
-		int score = lua_tointeger(L, -1) + 1;
-
-		// Pushing to lua
-		lua_pushinteger(L, score);
-		lua_setglobal(L, "score");
-		lua_pcall(L, 1, 0, 0);
-
-		// Chaning text string
-		m_text.setString(std::to_string(score));
-		m_text.setOrigin({ m_text.getGlobalBounds().width / 2 + m_text.getOutlineThickness() - 5 , 25 + m_text.getGlobalBounds().height / 2 + m_text.getOutlineThickness() });
-	}
-	else std::cout << "Score is not an integer in lua." << std::endl;
-}
-
 void Player::collision(sf::Vector2i mapSize)
 {
 	lua_getglobal(L, "collision");
@@ -92,6 +72,15 @@ void Player::collisionWithTiles(std::vector<std::vector<Tile*>>* tiles)
 				if (lua_toboolean(L, -1))
 				{
 					t[x][y]->setTileType(Tile::Ground);
+					lua_getglobal(L, "score");
+					if (lua_isinteger(L, -1))
+					{
+						int score = lua_tointeger(L, -1);
+
+						// Changing text string
+						m_text.setString(std::to_string(score));
+						m_text.setOrigin({ m_text.getGlobalBounds().width / 2 + m_text.getOutlineThickness() - 5 , 25 + m_text.getGlobalBounds().height / 2 + m_text.getOutlineThickness() });
+					}
 				}
 
 				lua_pop(L, 1);

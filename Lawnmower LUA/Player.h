@@ -16,7 +16,6 @@ public:
 	void update();
 	void updatePosition();
 
-	void addPoint();
 	void collision(sf::Vector2i mapSize);
 	void collisionWithPlayer(Player* otherPlayer);
 	void collisionWithTiles(std::vector<std::vector<Tile*>>* tiles);
