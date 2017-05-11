@@ -76,7 +76,6 @@ end
 
 function collisionWithTile(tilePosx, tilePosy, tileSize, type)
 	local intersection = {x = 0, y = 0}
-
 	return false
 
 --[[	if position.x - playerSize / 2 < tilePosx + tileSize / 2 and
