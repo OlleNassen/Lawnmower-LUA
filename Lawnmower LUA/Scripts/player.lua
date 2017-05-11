@@ -45,48 +45,42 @@ function getPosition()
 end
 
 
-function collisionWithPlayer(playerPos, playerSize)
-	collision = false
-	intersection = 0, 0
-	if position.x > playerPos.x  - playerSize / 2 
-		and position.x < playerPos.x + playerSize / 2 
-		and position.y > playerPos.y - playerSize / 2 
-		and position.y < playerPos.y + playerSize / 2 then
-		collision = true	
+function collisionWithPlayer(playerPosx playerPosy, playerSize)
+	intersection = {x = 0, y = 0}
 
-		if position.x > playerPos.x + playerSize / 2 then
-			intersection.x = (playerPos.x + playerSize / 2) - (position.x - playerSize / 2)
+		if positionx > playerPosx + playerSize / 2 then
+			intersection.x = (playerPosx + playerSize / 2) - (positionx - playerSize / 2)
 		end
 
-		if position.x > playerPos.x + playerSize / 2 then	
-			intersection.x = (position.x + playerSize / 2) - (playerPos.x - playerSize / 2)
+		if positionx > playerPosx + playerSize / 2 then	
+			intersection.x = (positionx + playerSize / 2) - (playerPosx - playerSize / 2)
 		end
 		
-		if position.y > playerPos.y + playerSize / 2 then
-			intersection.y = (playerPos.y + playerSize / 2) - (position.y - playerSize / 2)
+		if positiony > playerPosy + playerSize / 2 then
+			intersection.y = (playerPosy + playerSize / 2) - (positiony - playerSize / 2)
 		end	
 
-		if position.y < playerPos.y - playerSize / 2 then
-			intersection.y = (position.y + playerSize / 2) - (playerPos.y - playerSize / 2)
+		if positiony < playerPosy - playerSize / 2 then
+			intersection.y = (positiony + playerSize / 2) - (playerPosy - playerSize / 2)
 		end	
 	
-		position.x = position.x + intersection.x
-		position.y = position.y + intersection.y
+		if intersection.x == 0 or intersection.y == 0 then
+			position.x = position.x + intersection.x
+			position.y = position.y + intersection.y
+			return true, intersection.x, intersection.y
+		else
+			return false, intersection.x, intersection.y
 
-		return true, intersection
-	end
-
-	return false, intersection
 end
 
 
-function collisionWithTile(tilePos, tileSize, type)
+function collisionWithTile(tilePosx, tilePosy, tileSize, type)
 	collision = false
-	intersection = 0, 0
-	if position.x > tilePos.x  - tileSize / 2 
-		and position.x < tilePos.x + tileSize / 2 
-		and position.y > tilePos.y - tileSize / 2 
-		and position.y < tilePos.y + tileSize / 2 then
+	intersection = {x = 0, y = 0}
+	if position.x > tilePosx  - tileSize / 2 
+		and position.x < tilePosx + tileSize / 2 
+		and position.y > tilePosy - tileSize / 2 
+		and position.y < tilePosy + tileSize / 2 then
 		collision = true	
 	end
 
