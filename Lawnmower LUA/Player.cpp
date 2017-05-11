@@ -99,7 +99,7 @@ void Player::collisionWithTiles(std::vector<std::vector<Tile*>>* tiles)
 	else std::cout << "collisionWithTile is not a function" << std::endl;
 }
 
-sf::Vector2f Player::collisionPlayer(Player* otherPlayer)
+void Player::collisionWithPlayer(Player* otherPlayer)
 {
 	lua_getglobal(L, "collisionWithPlayer");
 	if (lua_isfunction(L, -1))
@@ -107,12 +107,14 @@ sf::Vector2f Player::collisionPlayer(Player* otherPlayer)
 		lua_pushnumber(L, otherPlayer->getPosition().x);
 		lua_pushnumber(L, otherPlayer->getPosition().y);
 		lua_pushnumber(L, otherPlayer->getHitbox().width);
-		lua_pcall(L, 2, 2, 0);
+		lua_pcall(L, 3, 3, 0);
 		
-
+		if (lua_toboolean(L, -1))
+		{
+			otherPlayer->setPosition(sf::Vector2f(otherPlayer->getPosition().x - lua_tonumber(L, -3), otherPlayer->getPosition().y - lua_tonumber(L, -2)));
+		}
 	}
 	else std::cout << "collision is not a function" << std::endl;
-	return 
 }
 
 void Player::move(float delta, std::string verticalDir, std::string horizontalDir)
