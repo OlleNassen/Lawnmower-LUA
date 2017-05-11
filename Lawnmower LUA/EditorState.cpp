@@ -18,6 +18,12 @@ EditorState::EditorState(sf::RenderWindow& window, std::shared_ptr<ResourceManag
 	m_textInfo.setString("Esq: Back\nS: Save\n1: Grass\n2: Ground\n3: Stone");
 	m_textInfo.setPosition(5, 0);
 
+
+	m_textType.setOutlineThickness(2.5f);
+	m_textType.setOutlineColor(sf::Color::Black);
+	m_textInfo.setOutlineThickness(2.5f);
+	m_textInfo.setOutlineColor(sf::Color::Black);
+
 	// Initialize Lua
 	L = luaL_newstate();
 	luaL_openlibs(L);
