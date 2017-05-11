@@ -7,6 +7,11 @@ EditorState::EditorState(sf::RenderWindow& window, std::shared_ptr<ResourceManag
 {
     m_resources = resources;
 	m_type = Tile::Stone;
+	m_type = Tile::Grass; m_textType.setString("Tile: Stone");
+
+	// Create text
+	m_textType.setFont(m_resources->fonts[0]);
+	m_textType.setPosition(10, 640 - m_textType.getGlobalBounds().height - 20);
 
 	// Initialize Lua
 	L = luaL_newstate();
@@ -50,9 +55,9 @@ void EditorState::handleInput()
 
 void EditorState::update()
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)) m_type = Tile::Grass;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)) m_type = Tile::Ground;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)) m_type = Tile::Stone;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)) { m_type = Tile::Grass; m_textType.setString("Tile: Grass"); }
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)) { m_type = Tile::Ground; m_textType.setString("Tile: Ground"); }
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)) { m_type = Tile::Stone; m_textType.setString("Tile: Stone"); }
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
@@ -77,6 +82,7 @@ void EditorState::draw() const
             m_window.draw(tile);
         }
     }
+	m_window.draw(m_textType);
 }
 
 void EditorState::pause()
