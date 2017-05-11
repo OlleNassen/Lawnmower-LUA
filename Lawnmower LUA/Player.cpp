@@ -92,7 +92,6 @@ void Player::collisionWithTiles(std::vector<std::vector<Tile*>>* tiles)
 				if (lua_toboolean(L, -1))
 				{
 					t[x][y]->setTileType(Tile::Ground);
-					break;
 				}
 			}
 		}
