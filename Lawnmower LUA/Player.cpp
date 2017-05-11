@@ -75,25 +75,25 @@ void Player::collision(sf::Vector2i mapSize)
 
 void Player::collisionWithTiles(std::vector<std::vector<Tile*>>* tiles)
 {
-	bool isGrass = 0;
 	lua_getglobal(L, "collisionWithTile");
 	if (lua_isfunction(L, -1))
 	{
-		for (auto& tilesX : *tiles)
+		std::vector<std::vector<Tile*>> t = *tiles;
+		for (int x = 0; x < t.size(); x++)
 		{
-			for (auto& tile : tilesX)
+			for (int y = 0; y < t[x].size(); y++)
 			{
-				sf::FloatRect hitbox = tile->getHitbox();
-				lua_pushnumber(L, (hitbox.left + hitbox.width / 2));
-				lua_pushnumber(L, (hitbox.top + hitbox.height / 2));
-				lua_pushnumber(L, hitbox.width);
-				lua_pushnumber(L, static_cast<int>(tile->getTileType()));
+				lua_pushnumber(L, t[x][y]->getHitbox().left);
+				lua_pushnumber(L, t[x][y]->getHitbox().top);
+				lua_pushnumber(L, t[x][y]->getHitbox().width);
+				lua_pushnumber(L, static_cast<int>(t[x][y]->getTileType()));
 				lua_pcall(L, 4, 1, 0);
 
-				isGrass = false;
-				isGrass = lua_toboolean(L, -1);
-				if (isGrass)
-					tile->setTileType(Tile::Ground);
+				if (lua_toboolean(L, -1))
+				{
+					t[x][y]->setTileType(Tile::Ground);
+					break;
+				}
 			}
 		}
 	}
