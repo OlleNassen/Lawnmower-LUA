@@ -90,9 +90,9 @@ void Player::collisionWithTiles(std::vector<std::vector<Tile*>>* tiles)
 				lua_pushnumber(L, static_cast<int>(tile->getTileType()));
 				lua_pcall(L, 4, 1, 0);
 
-				isGrass = lua_toboolean(L, -1);
-				if (isGrass)
-					tile->setTileType(Tile::Ground);
+				//isGrass = lua_toboolean(L, -1);
+				//if (isGrass)
+				//	tile->setTileType(Tile::Ground);
 			}
 		}
 	}
