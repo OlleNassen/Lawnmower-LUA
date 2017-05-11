@@ -3,6 +3,7 @@
 
 #include <SFML\Graphics.hpp>
 #include <iostream>
+#include "Tile.h"
 #include "lua.hpp"
 
 class Player : public sf::Drawable, sf::Transformable
@@ -17,6 +18,7 @@ public:
 
 	void addPoint();
 	void collision(sf::Vector2i mapSize);
+	void collisionWithTiles(std::vector<Tile>* tiles);
 	void move(float delta, std::string horizontalDir, std::string verticalDir);
 
 	sf::Sprite* getSprite();
