@@ -53,34 +53,20 @@ function collisionWithPlayer(playerPosx, playerPosy, playerSize)
 		position.y - playerSize / 2 < playerPosy + playerSize / 2 and
 		position.y + playerSize / 2 > playerPosy - playerSize / 2 then
 		
-		if position.x - playerSize / 2 < playerPosx + playerSize / 2 then
-			intersection.x = (playerPosx + playerSize / 2) - (position.x - playerSize / 2)
-		end
-
-		if position.x + playerSize / 2 > playerPosx - playerSize / 2 then	
-			intersection.x = -(position.x + playerSize / 2) + (playerPosx - playerSize / 2)
-		end
-		
-		if position.y - playerSize / 2 < playerPosy + playerSize / 2 then
-			intersection.y = (playerPosy + playerSize / 2) - (position.y - playerSize / 2)
-		end	
-
-		if position.y + playerSize / 2 > playerPosy - playerSize / 2 then
-			intersection.y = -(position.y + playerSize / 2) + (playerPosy - playerSize / 2)
-		end	
+		intersection.x = (playerPosx + playerSize / 2) - (position.x + playerSize / 2)
+		intersection.y = (playerPosy + playerSize / 2) - (position.y + playerSize / 2)
 	
-		intersection.x = intersection.x / 2
-		intersection.y = intersection.y / 2
+		intersection.x = -intersection.x / 6
+		intersection.y = -intersection.y / 6
 
-		if intersection.x ~= 0 or intersection.y ~= 0 then
-			if math.abs(intersection.x) < math.abs(intersection.y) then
-				position.x = position.x + intersection.x
-				return true, intersection.x, 0
-			else
-				position.y = position.y + intersection.y
-				return true, 0, intersection.y
-			end
+		if math.abs(intersection.x) > math.abs(intersection.y) then
+			position.x = position.x + intersection.x
+			return true, intersection.x, 0
+		else
+			position.y = position.y + intersection.y
+			return true, 0, intersection.y
 		end
+		return true, intersection.x, intersection.y
 		
 	end
 
