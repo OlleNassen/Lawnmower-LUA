@@ -186,7 +186,7 @@
     <None Include="Scripts\tile.lua" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Resources\map.txt" />
+    <Text Include="Resources\map.lawn" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

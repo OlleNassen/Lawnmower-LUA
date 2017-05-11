@@ -59,7 +59,7 @@ void World::loadPlayers(int nrOfPlayers, std::shared_ptr<ResourceManager> resour
 void World::loadTiles(std::shared_ptr<ResourceManager> resources)
 {
 
-    std::ifstream map(".\\Resources\\map.txt");
+    std::ifstream map(".\\Resources\\map.lawn");
 
     unsigned int x = 0;
     unsigned int y = 0;

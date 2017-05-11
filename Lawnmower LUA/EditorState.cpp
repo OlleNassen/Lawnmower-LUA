@@ -89,7 +89,7 @@ void EditorState::resume()
 
 int EditorState::saveToFile(lua_State* L)
 {
-    std::ofstream out(".\\Resources\\map.txt");
+    std::ofstream out(".\\Resources\\map.lawn");
 
 	lua_getglobal(L, "grid");
 	if (lua_istable(L, -1))
