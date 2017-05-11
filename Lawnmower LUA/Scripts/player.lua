@@ -46,7 +46,7 @@ end
 
 
 function collisionWithPlayer(playerPos, playerSize)
-	collision = false
+	local collision = false
 	intersection = 0, 0
 	if position.x > playerPos.x  - playerSize / 2 
 		and position.x < playerPos.x + playerSize / 2 
@@ -81,7 +81,7 @@ end
 
 
 function collisionWithTile(tilePos, tileSize, type)
-	collision = false
+	local collision = false
 	intersection = 0, 0
 	if position.x > tilePos.x  - tileSize / 2 
 		and position.x < tilePos.x + tileSize / 2 
