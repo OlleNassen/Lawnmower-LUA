@@ -69,7 +69,7 @@ function collisionWithPlayer(playerPosx, playerPosy, playerSize)
 			intersection.y = (position.y + playerSize / 2) - (playerPosy - playerSize / 2)
 		end	
 	
-		if intersection.x == 0 or intersection.y == 0 then
+		if intersection.x ~= 0 or intersection.y ~= 0 then
 			position.x = position.x + intersection.x
 			position.y = position.y + intersection.y
 			return true, intersection.x, intersection.y
