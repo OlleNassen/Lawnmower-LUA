@@ -52,7 +52,7 @@ function collisionWithPlayer(playerPosx, playerPosy, playerSize)
 			intersection.x = (playerPosx + playerSize / 2) - (position.x - playerSize / 2)
 		end
 
-		if position.x > playerPosx + playerSize / 2 then	
+		if position.x < playerPosx - playerSize / 2 then	
 			intersection.x = (position.x + playerSize / 2) - (playerPosx - playerSize / 2)
 		end
 		
