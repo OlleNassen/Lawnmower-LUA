@@ -13,6 +13,11 @@ EditorState::EditorState(sf::RenderWindow& window, std::shared_ptr<ResourceManag
 	m_textType.setFont(m_resources->fonts[0]);
 	m_textType.setPosition(10, 640 - m_textType.getGlobalBounds().height - 20);
 
+	m_textInfo.setFont(m_resources->fonts[0]);
+	m_textInfo.setCharacterSize(15);
+	m_textInfo.setString("Num1: Grass\nNum2: Ground\nNum3: Stone");
+	m_textInfo.setPosition(10, 0);
+
 	// Initialize Lua
 	L = luaL_newstate();
 	luaL_openlibs(L);
@@ -83,6 +88,7 @@ void EditorState::draw() const
         }
     }
 	m_window.draw(m_textType);
+	m_window.draw(m_textInfo);
 }
 
 void EditorState::pause()
