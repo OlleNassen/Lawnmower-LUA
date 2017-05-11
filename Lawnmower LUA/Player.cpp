@@ -93,7 +93,7 @@ void Player::collisionWithTiles(std::vector<Tile>* tiles)
 				tiles->at(i).setTileType(Tile::Ground);
 		}
 	}
-	else std::cout << "collisionWithTiles is not a function" << std::endl
+    else std::cout << "collisionWithTiles is not a function" << std::endl;
 }
 
 void Player::move(float delta, std::string verticalDir, std::string horizontalDir)
