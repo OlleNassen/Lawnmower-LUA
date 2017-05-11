@@ -45,7 +45,7 @@ function getPosition()
 end
 
 
-function collisionWithPlayer(playerPosx playerPosy, playerSize)
+function collisionWithPlayer(playerPosx, playerPosy, playerSize)
 	intersection = {x = 0, y = 0}
 
 		if positionx > playerPosx + playerSize / 2 then
