@@ -120,7 +120,7 @@ void World::loadTiles(std::shared_ptr<ResourceManager> resources)
 
 void World::collision()
 {
-    for (int i = 0; i < m_players.size() - 1; i++)
+    for (int i = 0; i < m_players.size(); i++)
     {
 		// Player - Player collision
 		for (int j = i + 1; j < m_players.size(); j++)
