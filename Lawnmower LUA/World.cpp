@@ -220,6 +220,9 @@ void World::update()
 	for (auto& players : m_players)
 	{
 		players->collision(m_mapSize);
+        
+        // Fixa players->collisionWithPlayer();
+
 		players->update();
 	}
 
@@ -227,6 +230,12 @@ void World::update()
 	{
 		for (const auto& tile : tiles)
 		{
+            /*
+            for (auto& players : m_players)
+            {
+                // Fixa players->collisionWithTile(); // hmmmmmmm........
+            }
+            */
 			tile->update();
 		}
 	}
