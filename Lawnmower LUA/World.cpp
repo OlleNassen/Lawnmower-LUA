@@ -124,15 +124,15 @@ void World::collision()
 	// knappar på editorn
 	// score updateras i denna typ
 
-    for (auto& player : m_players)
+    for (int i = 0; i < m_players.size() - 1; i++)
     {
 
 		// Player - Player collision
-		for (auto& otherPlayer : m_players)
+		for (int j = i + 1; j < m_players.size(); j++)
 		{
-			if (player != otherPlayer)
+			if (m_players[i] != m_players[j])
 			{
-				player->collisionWithPlayer(otherPlayer);
+				m_players[i]->collisionWithPlayer(m_players[j]);
 
 				/*sf::FloatRect intersection;
 				if (player->getHitbox().intersects(otherPlayer->getHitbox(), intersection))
@@ -168,7 +168,7 @@ void World::collision()
 				}*/
 			}
 		}
-		player->collisionWithTiles(&m_tiles);
+		m_players[i]->collisionWithTiles(&m_tiles);
     }
 }
 
