@@ -73,27 +73,30 @@ void Player::collision(sf::Vector2i mapSize)
 	else std::cout << "collision is not a function" << std::endl;
 }
 
-void Player::collisionWithTiles(std::vector<Tile>* tiles)
+void Player::collisionWithTiles(std::vector<std::vector<Tile*>>* tiles)
 {
 	bool isGrass = false;
-	lua_getglobal(L, "collisionWithTiles");
+	lua_getglobal(L, "collisionWithTile");
 	if (lua_isfunction(L, -1))
 	{
-		for (int i = 0; i < tiles->size(); i++)
+		for (auto& tilesX : *tiles)
 		{
-			sf::FloatRect hitbox = tiles->at(i).getHitbox();
-			lua_pushnumber(L, (hitbox.left + hitbox.width / 2));
-			lua_pushnumber(L, (hitbox.top + hitbox.height / 2));
-			lua_pushnumber(L, hitbox.width);
-			lua_pushnumber(L, static_cast<int>(tiles->at(i).getTileType()));
-			lua_pcall(L, 4, 1, 0);
+			for (auto& tile : tilesX)
+			{
+				sf::FloatRect hitbox = tile->getHitbox();
+				lua_pushnumber(L, (hitbox.left + hitbox.width / 2));
+				lua_pushnumber(L, (hitbox.top + hitbox.height / 2));
+				lua_pushnumber(L, hitbox.width);
+				lua_pushnumber(L, static_cast<int>(tile->getTileType()));
+				lua_pcall(L, 4, 1, 0);
 
-			isGrass = lua_toboolean(L, -1);
-			if (isGrass)
-				tiles->at(i).setTileType(Tile::Ground);
+				isGrass = lua_toboolean(L, -1);
+				if (isGrass)
+					tile->setTileType(Tile::Ground);
+			}
 		}
 	}
-    else std::cout << "collisionWithTiles is not a function" << std::endl;
+	else std::cout << "collisionWithTile is not a function" << std::endl;
 }
 
 void Player::move(float delta, std::string verticalDir, std::string horizontalDir)
