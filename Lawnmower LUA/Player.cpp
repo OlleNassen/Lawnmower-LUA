@@ -76,7 +76,7 @@ void Player::collision(sf::Vector2i mapSize)
 void Player::collisionWithTiles(std::vector<std::vector<Tile*>>* tiles)
 {
 	bool isGrass = false;
-	lua_getglobal(L, "collisionWithTiles");
+	lua_getglobal(L, "collisionWithTile");
 	if (lua_isfunction(L, -1))
 	{
 		for (auto& tilesX : *tiles)
@@ -96,7 +96,7 @@ void Player::collisionWithTiles(std::vector<std::vector<Tile*>>* tiles)
 			}
 		}
 	}
-	else std::cout << "collisionWithTiles is not a function" << std::endl;
+	else std::cout << "collisionWithTile is not a function" << std::endl;
 }
 
 void Player::move(float delta, std::string verticalDir, std::string horizontalDir)
