@@ -132,7 +132,9 @@ void World::collision()
 		{
 			if (player != otherPlayer)
 			{
-				sf::FloatRect intersection;
+				player->collisionWithPlayer(otherPlayer);
+
+				/*sf::FloatRect intersection;
 				if (player->getHitbox().intersects(otherPlayer->getHitbox(), intersection))
 				{
 					// Fix position in x
@@ -163,7 +165,7 @@ void World::collision()
 							otherPlayer->setPosition(sf::Vector2f(otherPlayer->getPosition().x, otherPlayer->getPosition().y - intersection.height * 0.5f));
 						}
 					}
-				}
+				}*/
 			}
 		}
 		player->collisionWithTiles(&m_tiles);
