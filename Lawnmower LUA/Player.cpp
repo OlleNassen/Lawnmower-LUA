@@ -73,6 +73,32 @@ void Player::collision(sf::Vector2i mapSize)
 	else std::cout << "collision is not a function" << std::endl;
 }
 
+void Player::collisionWithTiles(std::vector<std::vector<Tile*>>* tiles)
+{
+	bool isGrass = false;
+	lua_getglobal(L, "collisionWithTile");
+	if (lua_isfunction(L, -1))
+	{
+		for (auto& tilesX : *tiles)
+		{
+			for (auto& tile : tilesX)
+			{
+				sf::FloatRect hitbox = tile->getHitbox();
+				lua_pushnumber(L, (hitbox.left + hitbox.width / 2));
+				lua_pushnumber(L, (hitbox.top + hitbox.height / 2));
+				lua_pushnumber(L, hitbox.width);
+				lua_pushnumber(L, static_cast<int>(tile->getTileType()));
+				lua_pcall(L, 4, 1, 0);
+
+				isGrass = lua_toboolean(L, -1);
+				if (isGrass)
+					tile->setTileType(Tile::Ground);
+			}
+		}
+	}
+	else std::cout << "collisionWithTile is not a function" << std::endl;
+}
+
 sf::Vector2f Player::collisionPlayer(Player* otherPlayer)
 {
 	lua_getglobal(L, "collisionWithPlayer");
