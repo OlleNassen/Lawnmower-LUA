@@ -120,6 +120,10 @@ void World::loadTiles(std::shared_ptr<ResourceManager> resources)
 
 void World::collision()
 {
+	// gör denna i lua
+	// knappar på editorn
+	// score updateras i denna typ
+
     for (auto& player : m_players)
     {
 
