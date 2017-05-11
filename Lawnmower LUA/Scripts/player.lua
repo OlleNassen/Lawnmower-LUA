@@ -95,11 +95,11 @@ function collisionWithTile(tilePosx, tilePosy, tileSize, type)
 	end	
 	
 	if intersection.x == 0 or intersection.y == 0 then
-		position.x = position.x + intersection.x
-		position.y = position.y + intersection.y
-		return 5
+	--	position.x = position.x + intersection.x
+	--	position.y = position.y + intersection.y
+		return 2
 	else
-		return 5
+		return 3
 	end
-	return 5
+	return 4
 end
