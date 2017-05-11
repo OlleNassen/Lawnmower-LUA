@@ -86,6 +86,9 @@ function collisionWithTile(tilePosx, tilePosy, tileSize, type)
 			score = score + 1
 			return true
 		end
+		if type == 2 then
+			collisionWithPlayer(tilePosx, tilePosy, tileSize)
+		end
 	end
 	return false
 end

@@ -120,52 +120,14 @@ void World::loadTiles(std::shared_ptr<ResourceManager> resources)
 
 void World::collision()
 {
-	// gör denna i lua
-	// knappar på editorn
-	// score updateras i denna typ
-
     for (int i = 0; i < m_players.size() - 1; i++)
     {
-
 		// Player - Player collision
 		for (int j = i + 1; j < m_players.size(); j++)
 		{
 			if (m_players[i] != m_players[j])
 			{
 				m_players[i]->collisionWithPlayer(m_players[j]);
-
-				/*sf::FloatRect intersection;
-				if (player->getHitbox().intersects(otherPlayer->getHitbox(), intersection))
-				{
-					// Fix position in x
-					if (intersection.width < intersection.height)
-					{
-						if (player->getPosition().x < intersection.left)
-						{
-							player->setPosition(sf::Vector2f(player->getPosition().x - intersection.width * 0.5f, player->getPosition().y));
-							otherPlayer->setPosition(sf::Vector2f(otherPlayer->getPosition().x + intersection.width * 0.5f, otherPlayer->getPosition().y));
-						}
-						else
-						{
-							player->setPosition(sf::Vector2f(player->getPosition().x + intersection.width * 0.5f, player->getPosition().y));
-							otherPlayer->setPosition(sf::Vector2f(otherPlayer->getPosition().x - intersection.width * 0.5f, otherPlayer->getPosition().y));
-						}
-					}
-					// Fix position in y
-					else
-					{
-						if (player->getPosition().y < intersection.top)
-						{
-							player->setPosition(sf::Vector2f(player->getPosition().x, player->getPosition().y - intersection.height * 0.5f));
-							otherPlayer->setPosition(sf::Vector2f(otherPlayer->getPosition().x, otherPlayer->getPosition().y + intersection.height * 0.5f));
-						}
-						else
-						{
-							player->setPosition(sf::Vector2f(player->getPosition().x, player->getPosition().y + intersection.height * 0.5f));
-							otherPlayer->setPosition(sf::Vector2f(otherPlayer->getPosition().x, otherPlayer->getPosition().y - intersection.height * 0.5f));
-						}
-					}
-				}*/
 			}
 		}
 		m_players[i]->collisionWithTiles(&m_tiles);
