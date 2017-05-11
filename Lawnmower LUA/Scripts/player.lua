@@ -86,27 +86,7 @@ function collisionWithTile(tilePosx, tilePosy, tileSize, type)
 			score = score + 1
 			return true
 		elseif type == 2 then
-			if position.x - tileSize / 2 < tilePosx + tileSize / 2 then
-				intersection.x = (tilePosx + tileSize / 2) - (position.x - tileSize / 2)
-			end
-
-			if position.x + tileSize / 2 > tilePosx - tileSize / 2 then	
-				intersection.x = -(position.x + tileSize / 2) + (tilePosx - tileSize / 2)
-			end
-		
-			if position.y - tileSize / 2 < tilePosy + tileSize / 2 then
-				intersection.y = (tilePosy + tileSize / 2) - (position.y - tileSize / 2)
-			end	
-
-			if position.y + tileSize / 2 > tilePosy - tileSize / 2 then
-				intersection.y = -(position.y + tileSize / 2) + (tilePosy - tileSize / 2)
-			end	
-
-			if math.abs(intersection.x) > math.abs(intersection.y) then
-				position.x = position.x + intersection.x
-			else
-				position.y = position.y + intersection.y
-			end
+				collisionWithPlayer(tilePosx, tilePosy, tileSize)
 			return false
 		end
 	end
