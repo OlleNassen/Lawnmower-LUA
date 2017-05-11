@@ -70,21 +70,21 @@ function collisionWithPlayer(playerPosx, playerPosy, playerSize)
 			return true, intersection.x, intersection.y
 		else
 			return false, intersection.x, intersection.y
-
+		end
 end
 
 
 function collisionWithTile(tilePosx, tilePosy, tileSize, type)
-	collision = false
+	collide = false
 	intersection = {x = 0, y = 0}
 	if position.x > tilePosx  - tileSize / 2 
 		and position.x < tilePosx + tileSize / 2 
 		and position.y > tilePosy - tileSize / 2 
 		and position.y < tilePosy + tileSize / 2 then
-		collision = true	
+		collide = true	
 	end
 
-	if collision == true then
+	if collide == true then
 		if type == 2 then
 			position = 0, 0
 			return false
