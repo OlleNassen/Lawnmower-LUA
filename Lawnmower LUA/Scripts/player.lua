@@ -77,29 +77,29 @@ end
 function collisionWithTile(tilePosx, tilePosy, tileSize, type)
 	collide = false
 	intersection = {x = 0, y = 0}
-	if position.x > tilePosx  - tileSize / 2 
-		and position.x < tilePosx + tileSize / 2 
-		and position.y > tilePosy - tileSize / 2 
-		and position.y < tilePosy + tileSize / 2 then
-		collide = true	
+
+	if position.x > tilePosx + tileSize / 2 then
+		intersection.x = (tilePosx + tileSize / 2) - (position.x - tileSize / 2)
 	end
 
-	if collide == true then
-		if type == 2 then
-			position = 0, 0
-			return false
-		end
-		if type == 1 then
-			return false
-		end
-		if type == 0 then
-			score = score + 1
-			return true
-		end
+	if position.x > tilePosx + tileSize / 2 then	
+		intersection.x = (position.x + tileSize / 2) - (tilePosx - tileSize / 2)
 	end
-	return false
+		
+	if position.y > tilePosy + tileSize / 2 then
+		intersection.y = (tilePosy + tileSize / 2) - (position.y - tileSize / 2)
+	end	
+
+	if position.y < tilePosy - tileSize / 2 then
+		intersection.y = (position.y + tileSize / 2) - (tilePosy - tileSize / 2)
+	end	
+	
+	if intersection.x == 0 or intersection.y == 0 then
+		position.x = position.x + intersection.x
+		position.y = position.y + intersection.y
+		return 5
+	else
+		return 5
+	end
+	return 5
 end
-
-
-
-
