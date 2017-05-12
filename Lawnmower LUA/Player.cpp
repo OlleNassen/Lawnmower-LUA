@@ -22,7 +22,10 @@ Player::Player(sf::Font& font, sf::Texture& texture)
 
 Player::Player(const Player & other) { }
 
-Player::~Player() { }
+Player::~Player() 
+{
+	lua_close(L);
+}
 
 void Player::update()
 {

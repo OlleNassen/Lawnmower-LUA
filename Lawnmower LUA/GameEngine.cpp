@@ -87,4 +87,5 @@ void GameEngine::run()
 
     }
 
+	m_window.close();
 }

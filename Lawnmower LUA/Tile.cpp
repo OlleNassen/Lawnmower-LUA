@@ -18,7 +18,10 @@ Tile::Tile(std::vector<sf::Texture>* textures, sf::Vector2i index, tileType type
 
 Tile::Tile(const Tile & other) { }
 
-Tile::~Tile() { }
+Tile::~Tile() 
+{
+	lua_close(L);
+}
 
 void Tile::update()
 {

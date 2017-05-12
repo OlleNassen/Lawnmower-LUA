@@ -7,7 +7,7 @@ World::World(sf::Vector2i mapSize, std::shared_ptr<ResourceManager> resources)
 	loadPlayers(4, resources);
 
     loadTiles(resources);
-    
+  
 }
 
 World::~World()

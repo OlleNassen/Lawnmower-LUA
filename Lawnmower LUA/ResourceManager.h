@@ -33,9 +33,7 @@ struct ResourceManager
         sf::Texture lawnmower;
         lawnmower.loadFromFile(".\\Resources\\lawnmower32x32.png");
         lawnmowers.push_back(lawnmower);
-    
-    }
-
-
+	}
+	~ResourceManager(){}
 };
 

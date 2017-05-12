@@ -32,14 +32,18 @@ EditorState::EditorState(sf::RenderWindow& window, std::shared_ptr<ResourceManag
 	m_tiles.resize(25);
 	for (int i = 0; i < 25; i++)
 		m_tiles[i].resize(20);
+	
 
 	loadGrid();
 }
 
-
 EditorState::~EditorState()
 {
+	lua_close(L);
 
+	for (int i = 0; i < 25; i++)
+		m_tiles[i].clear();
+	m_tiles.clear();
 }
 
 void EditorState::handleEvents()
@@ -56,7 +60,6 @@ void EditorState::handleEvents()
                 m_changeState = true;
                 m_nextState = States::EXIT;
             }
-
     }
 }
 
@@ -134,6 +137,7 @@ int EditorState::saveToFile(lua_State* L)
 		}
 	}
 	else std::cout << "grid is not a table" << std::endl;
+	out.close();
 
 	return 0;
 }
