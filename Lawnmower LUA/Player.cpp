@@ -85,7 +85,6 @@ void Player::collisionWithTiles(std::vector<std::vector<Tile*>>* tiles)
 						m_text.setOrigin({ m_text.getGlobalBounds().width / 2 + m_text.getOutlineThickness() - 5 , 25 + m_text.getGlobalBounds().height / 2 + m_text.getOutlineThickness() });
 					}
 				}
-
 				lua_pop(L, 1);
 			}
 			else std::cout << "collisionWithTile is not a function" << std::endl;
@@ -107,6 +106,7 @@ void Player::collisionWithPlayer(Player* otherPlayer)
 		{
 			otherPlayer->setPosition(sf::Vector2f(otherPlayer->getPosition().x - lua_tonumber(L, -2), otherPlayer->getPosition().y - lua_tonumber(L, -1)));
 		}
+		lua_pop(L, 3);
 	}
 	else std::cout << "collision is not a function" << std::endl;
 }
